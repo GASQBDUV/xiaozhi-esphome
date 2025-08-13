@@ -7,7 +7,7 @@
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/958a2d99-5752-481b-be1e-d9ad797e6e33" alt="fam" width="250"/>
-  <img src="https://github.com/user-attachments/assets/9ead5897-414a-4885-b7c6-c6ae7bb8708e" alt="DIY" width="250"/>
+  <img src="https://github.com/user-attachments/assets/96f173cd-9d57-492d-906c-83f3ce603ff2" alt="DIY" width="250"/>
   <img src="https://github.com/user-attachments/assets/1f2c79c9-1963-415e-b43d-945bbc477cae" alt="DIY" width="250"/>
 </p>
 <p align="center">
@@ -50,10 +50,11 @@ Video going through the esphome install of device was removed by youtube and my 
 * Spotpear Muma Horse v2
 * Spotpear Puck
 * DIY (breadboard)
-* Guition 1.8" Taichi pi (JC3636W518C)
+* Guition 1.8" Taichi pi (JC3636W518C) v1
 * Xingzhi Cube 1.54
 * "Breadboard Mini", the $7 custom ESP32-S3 with everything onboard
-
+* Waveshare 2.06" OLED Wrist Watch
+* 
 ## 🛒 Where to Buy
 
 Ball v1 & v2: https://vi.aliexpress.com/item/1005008627679270.html
@@ -71,6 +72,8 @@ Xingzhi Cube 1.54: https://www.aliexpress.com/item/1005008565082769.html
 Breadboard: Look in devices/Breadboard: https://github.com/RealDeco/xiaozhi-esphome/tree/main/devices/Breadboard
 
 Breadboard Mini: https://www.aliexpress.com/item/1005009448496585.html
+
+Waveshare 2.06" OLED Wrist Watch: https://vi.aliexpress.com/item/1005009516438849.html
 
 ## Accesories:
 

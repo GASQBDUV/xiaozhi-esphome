@@ -1,19 +1,27 @@
 
 ## 🚧 Work-in-Progress Device Code
 
-Welcome! Here you'll find my **work-in-progress code** for all devices, organized into two main YAML files:
+Welcome! Here you'll find my **work-in-progress code** for all devices i currently work on:
 
 * **`v1.yaml`**
   For **Ball v1**, **DIY models** and **xingzhi-cube-1.54** (identical hardware).
 
 * **`v2.yaml`**
-  For **Ball v2**, **Puck v1 & v2**, and **Muma** (all covered here).
+  For **Ball v2**, **Puck v1 & v2**, and all **Muma**.
 
-* **`Taichi_Pi.yaml`**
-  For GUITION 1.8” 360x360 ESP32-S3-JC3636W518.
+* **`v2-test.yaml`**
+  Up for testing. For **Ball v2**, **Puck v1 & v2**, and all **Muma**.
+
+* **`Taichi_Pi_V1.yaml`**
+  For GUITION 1.8” 360x360 ESP32-S3-JC3636W518 V1.
+
+* **`Taichi_Pi_V2.yaml`**
+  For GUITION 1.8” 360x360 ESP32-S3-JC3636W518 V2. **EXPERIMENTAL **
 
 * **`Wrist_Watch.yaml`**
   For Waveshare ESP32-S3-Touch-AMOLED-2.06 Watch.
+
+and more..
 
 ---
 

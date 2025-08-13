@@ -1,62 +1,16 @@
 substitutions:
-  name: esphome-web-0bac48
-  friendly_name: "Xiaozhi Ball V2"
+  name: esphome-web-ec8088
+  friendly_name: Xiaozhi Breadboard Mini 2
 
-## v1.07 26-jul-2025 #############################################################################################################################
-## changed how to play startup sound to avoid double triggering
-## v1.06 19-jul-2025 #############################################################################################################################
-## Added: Startup sound when connected to HA, optional with switch, and option to select other sounds in settings below.
-## Added: Mute and Playing icon to all emos.
-## v1.05 18-jul-2025 #############################################################################################################################
-## Fixes: minor bugfixes, sound level to max, show muted mic when playing music or playing TTS, not when playing internal sounds.
-## v1.04 13-jul-2025 #############################################################################################################################
-## Added: optional wake sound, delays the time before listening, so optional switch in HA.
-## Moved: show_text and show_battery_status to switches in HA.
-## v1.03 08-jul-2025 #############################################################################################################################
-## Added: optional show text boxes
-## v1.02 30-jun-2025 #############################################################################################################################
-## Added optional Battery Status
+#####SETTINGS:####################################################################################################################################
 
-## SETTINGS ######################################################################################################################################
-
-  imagemodel: "Eyes2" # (options are: Alfred,Astrobot,Buzz,Casita,Cybergirl,Dory,EVE,Eyes,Eyes2,GLaDOS,Girl1,Guy1,Guy2,Gwen,Harley,Jarvis,Luffy,Mario,Max,Prime,Robochibi,Robocop,Robot,Robotgirl,Shaun)
+  imagemodel: "Eyes" # (options are: Eyes2)
   startup_sound: "Home_Connected" # (options are: available,Home_Connected)
 
-  imagewidth: "240" # GC9A01A (Ball v2 & Muma & Puck) "240"
-  imageheight: "240" # GC9A01A (Ball v2 & Muma & Puck) "240"
-  displaymodel: "GC9A01A" # GC9A01A (Ball v2 & Puck) or ST7789V (Muma)
-  invertcolors: "true" # GC9A01A/ST7789V (Ball v2 & Muma & Puck) "true"
+  imagewidth: "128" # ILI9341 (breadboard 2.4") "240" or GC9A01A (Ball v1) "240" or ST7789V (Xingzhi Cube) "240"
+  imageheight: "64" # ILI9341 (breadboard 2.4") "320" or GC9A01A (Ball v1) "240" or ST7789V (Xingzhi Cube) "240"
 
-##################################################################################################################################################
-
-  # Hardware v2 pin mappings
-  sda_pin_bus_a: "15"        # I2C Bus A SDA
-  scl_pin_bus_a: "14"        # I2C BUS A SCL
-  sda_pin_bus_b: "11"        # I2C Bus B SDA
-  scl_pin_bus_b: "7"         # I2C BUS B SCL
-
-  i2s_lrclk_pin: "45"        # I2S LRCLK (Word Select)
-  i2s_bclk_pin: "9"          # I2S BCLK (Bit Clock)
-  i2s_mclk_pin: "16"         # I2S MCLK (Master Clock)
-  i2s_din_pin: "10"          # I2S Data In (Mic)
-  i2s_dout_pin: "8"          # I2S Data Out (Speaker)
-
-  speaker_enable_pin: "46"   # Speaker Enable
-  touch_input_pin: "12"      # Touch interrupt
-  touch_reset_pin: "6"       # Touch Reset
-
-  backlight_output_pin: "42" # Display Backlight
-  lcd_cs_pin: "5"            # Display CS (Chip Select)
-  lcd_dc_pin: "47"           # Display DC (Data/Command)
-  lcd_reset_pin: "38"        # Display Reset
-  spi_clk_pin: "4"           # SPI Clock
-  spi_mosi_pin: "2"          # SPI MOSI (Data Out)
-
-  left_top_button_pin: "0"   # Main Button
-  led_pin: "48"              # RGB LED (WS2812)
-  battery_adc_pin: "1"       # Battery Voltage ADC
-
-##################################################################################################################################################
+#####END OF SETTINGS##############################################################################################################################
 
   loading_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/loading.png
   idle_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/idle.png
@@ -65,7 +19,7 @@ substitutions:
   replying_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/replying.png
   error_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/error.png
   timer_finished_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/timer_finished.png
-  mute_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/mute.png
+  mute_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/Mute/${imagewidth}x${imageheight}/mute.png
 
   startup_sound_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/${startup_sound}.flac
 
@@ -85,9 +39,13 @@ substitutions:
   voice_assist_muted_phase_id: "12"
   voice_assist_timer_finished_phase_id: "20"
 
+  # These unique characters have been extracted from every test file of every language available on https://github.com/home-assistant/intents (14 March 2024)
+  # However, the Figtree font only contains Latin characters, so there is no point using this... unlessyou change the font configuration accordingly.
   allowed_characters: " !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrstuvwxyz{|}°²³µ¿ÁÂÄÅÉÖÚßàáâãäåæçèéêëìíîðñòóôõöøùúûüýþāăąćčďĐđēėęěğĮįıļľŁłńňőřśšťũūůűųźŻżŽžơưșțΆΈΌΐΑΒΓΔΕΖΗΘΚΜΝΠΡΣΤΥΦάέήίαβγδεζηθικλμνξοπρςστυφχψωϊόύώАБВГДЕЖЗИКЛМНОПРСТУХЦЧШЪЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяёђєіїјљњћאבגדהוזחטיכלםמןנסעפץצקרשת،ءآأإئابةتجحخدذرزسشصضطظعغفقكلمنهوىيٹپچڈکگںھہیےংকচতধনফবযরলশষস়ািু্చయలిెొ్ംഅആഇഈഉഎഓകഗങചജഞടഡണതദധനപഫബഭമയരറലളവശസഹാിീുൂെേൈ്ൺൻർൽൾაბგდევზთილმნოპრსტუფქყშჩცძჭხạảấầẩậắặẹẽếềểệỉịọỏốồổỗộớờởợụủứừửữựỳ—、一上不个中为主乾了些亮人任低佔何作供依侧係個側偵充光入全关冇冷几切到制前動區卧厅厨及口另右吊后吗启吸呀咗哪唔問啟嗎嘅嘛器圍在场執場外多大始安定客室家密寵对將小少左已帘常幫幾库度庫廊廚廳开式後恆感態成我戲戶户房所扇手打执把拔换掉控插摄整斯新明是景暗更最會有未本模機檯櫃欄次正氏水沒没洗活派温測源溫漏潮激濕灯為無煙照熱燈燥物狀玄现現瓦用發的盞目着睡私空窗立笛管節簾籬紅線红罐置聚聲脚腦腳臥色节著行衣解設調請謝警设调走路車车运連遊運過道邊部都量鎖锁門閂閉開關门闭除隱離電震霧面音頂題顏颜風风食餅餵가간감갔강개거게겨결경고공과관그금급기길깥꺼껐꼽나난내네놀누는능니다닫담대더데도동됐되된됨둡드든등디때떤뜨라래러렇렌려로료른를리림링마많명몇모무문물뭐바밝방배변보부불블빨뽑사산상색서설성세센션소쇼수스습시신실싱아안않알았애야어얼업없었에여연열옆오온완외왼요운움워원위으은을음의이인일임입있작잠장재전절정제져조족종주줄중줘지직진짐쪽차창천최추출충치침커컴켜켰쿠크키탁탄태탬터텔통트튼티파팬퍼폰표퓨플핑한함해했행혀현화활후휴힘，？"
 
+  # Add support for non-unicode characters by using better glyphset
   font_glyphsets: "GF_Latin_Core"
+  # for Greek use "Noto Sans" for other languages use a compatible font family
   font_family: Figtree
 
 esphome:
@@ -99,8 +57,6 @@ esphome:
     priority: 600
     then:
       - script.execute: draw_display
-      - component.update: battery_voltage
-      - component.update: battery_percentage
       - delay: 30s
       - if:
           condition:
@@ -148,7 +104,7 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   ap:
-    ssid: "Ball v2 Hotspot"
+    ssid: "Esp32S3-1 Fallback Hotspot"
     password: "RZ7D3EzJdPM6"
   on_connect:
     - script.execute: draw_display
@@ -157,122 +113,33 @@ wifi:
 
 captive_portal:
 
+uart:
+  id: uart_modbus
+  tx_pin: 43
+  rx_pin: 44
+  baud_rate: 256000 # Change this according to your setting
+  parity: NONE
+  stop_bits: 1
+
+ld2410:
+
 button:
   - platform: factory_reset
     id: factory_reset_btn
     internal: true
 
-sensor:
-  - platform: adc
-    pin: GPIO${battery_adc_pin}
-    name: "Battery Voltage"
-    id: battery_voltage
-    attenuation: 12db
-    accuracy_decimals: 2
-    update_interval: 1s
-    unit_of_measurement: "V"
-    icon: mdi:battery-medium
-    filters:
-      - multiply: 2.0
-      - median:
-          window_size: 7
-          send_every: 7
-          send_first_at: 7
-      - throttle: 1min
-    on_value:
-      then:
-        - component.update: battery_percentage
-      
-  - platform: template
-    id: battery_percentage
-    name: "Battery Percentage"
-    lambda: return id(battery_voltage).state;
-    accuracy_decimals: 0
-    unit_of_measurement: "%"
-    icon: mdi:battery-medium
-    filters:
-      - calibrate_linear:
-         method: exact
-         datapoints:
-          - 2.80 -> 0.0
-          - 3.10 -> 10.0
-          - 3.30 -> 20.0
-          - 3.45 -> 30.0
-          - 3.60 -> 40.0
-          - 3.70 -> 50.0
-          - 3.75 -> 60.0
-          - 3.80 -> 70.0
-          - 3.90 -> 80.0
-          - 4.00 -> 90.0
-          - 4.20 -> 100.0
-      - lambda: |-
-          if (x > 100) return 100;
-          if (x < 0) return 0;
-          return x;
-    on_value:
-      then:
-        - lambda: |-
-            int current = (int)x;
-            if (current != id(last_battery_percent)) {
-              id(last_battery_percent) = current;
-              id(draw_display).execute();
-            }
-
-touchscreen:
-  - platform: cst816
-    i2c_id: bus_b
-    interrupt_pin: ${touch_input_pin}
-    reset_pin: ${touch_reset_pin}
-    id: touch_dp
-    on_touch:
-      then:
-        - binary_sensor.template.publish:
-            id: touch_input
-            state: ON
-    on_release:
-      then:
-        - binary_sensor.template.publish:
-            id: touch_input
-            state: OFF
-
 binary_sensor:
-  - platform: template
-    name: "Touch Button"
-    id: touch_input
-    on_multi_click:
-      # Single tap
-      - timing:
-          - ON for 40ms to 400ms
-          - OFF for at least 330ms
-        then:
-          - if:
-              condition:
-                switch.is_on: timer_ringing
-              then:
-                - switch.turn_off: timer_ringing
-              else:
-                - if:
-                    condition:
-                      lambda: return id(wake_word_engine_location).state == "On device";
-                    then:
-                      - if:
-                          condition:
-                            not:
-                              voice_assistant.is_running:
-                          then:
-                            - voice_assistant.start:
-                          else:
-                            - voice_assistant.stop:  
-
-      - timing:
-          - ON for at least 1s
-        then:
-          - switch.toggle: show_battery_status
-          - script.execute: draw_display
+  - platform: ld2410
+    has_target:
+      name: Presence
+    has_moving_target:
+      name: Moving Target
+    has_still_target:
+      name: Still Target
 
   - platform: gpio
     pin:
-      number: GPIO${left_top_button_pin}
+      number: 0
       mode: INPUT_PULLUP
       ignore_strapping_warning: true
       inverted: true
@@ -291,42 +158,54 @@ binary_sensor:
               else:
                 - if:
                     condition:
-                      lambda: return id(wake_word_engine_location).state == "On device";
+                      not:
+                        voice_assistant.is_running:
                     then:
-                      - if:
-                          condition:
-                            not:
-                              voice_assistant.is_running:
-                          then:
-                            - voice_assistant.start:                     
-                          else:
-                            - voice_assistant.stop:  
+                      - voice_assistant.start:                     
+                    else:
+                      - voice_assistant.stop:                     
       - timing:
           - ON for at least 10s
         then:
           - button.press: factory_reset_btn
 
-output:
-  - platform: ledc
-    pin: GPIO${backlight_output_pin}
-    id: backlight_output
-    inverted: true 
+  - platform: gpio
+    pin: 
+      number: GPIO39
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "Left Button"
+    id: left_button
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    on_press:
+      - logger.log: "Button was pressed"
+    on_release:
+      - logger.log: "Button was released"
+
+  - platform: gpio
+    pin: 
+      number: GPIO40
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "Right Button"
+    id: right_button
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    on_press:
+      - logger.log: "Button was pressed"
+    on_release:
+      - logger.log: "Button was released"
 
 light:
-  - platform: monochromatic
-    id: Sled
-    name: Screen
-    icon: "mdi:television"
-    entity_category: config
-    output: backlight_output
-    restore_mode: ALWAYS_ON
-    default_transition_length: 250ms
   - platform: esp32_rmt_led_strip
     id: led
     name: none
     disabled_by_default: false
     entity_category: config
-    pin: GPIO${led_pin}
+    pin: GPIO48
     default_transition_length: 0s
     chipset: WS2812
     num_leds: 1
@@ -345,48 +224,33 @@ light:
           min_brightness: 50%
           max_brightness: 100%
 
-i2c:
-  - id: bus_a
-    sda: GPIO${sda_pin_bus_a}
-    scl: GPIO${scl_pin_bus_a}
-    scan: true
-  - id: bus_b
-    sda: GPIO${sda_pin_bus_b}
-    scl: GPIO${scl_pin_bus_b}
-    scan: true
-
 i2s_audio:
-  - id: i2s_audio_bus
-    i2s_lrclk_pin: GPIO${i2s_lrclk_pin}
-    i2s_bclk_pin: GPIO${i2s_bclk_pin}
-    i2s_mclk_pin: GPIO${i2s_mclk_pin}
-
-audio_dac:
-  - platform: es8311
-    i2c_id: bus_a 
-    id: es8311_dac
-    bits_per_sample: 16bit
-    sample_rate: 16000
+  - id: i2s_mic # For microphone
+    i2s_lrclk_pin: GPIO4 #WS 
+    i2s_bclk_pin: GPIO5  #SCK
+  - id: i2s_audio_bus # For speaker
+    i2s_lrclk_pin: GPIO16
+    i2s_bclk_pin: GPIO15
 
 microphone:
   - platform: i2s_audio
-    id: i2s_mics
-    sample_rate: 16000
-    i2s_din_pin: GPIO${i2s_din_pin}
-    bits_per_sample: 16bit
+    i2s_audio_id: i2s_mic
     adc_type: external
+    i2s_din_pin: GPIO6 #SD
+    id: i2s_mics
     channel: left
+    pdm: false
+    bits_per_sample: 16bit
 
 speaker:
   - platform: i2s_audio
     id: i2s_audio_speaker
-    i2s_dout_pin: GPIO${i2s_dout_pin}
+    i2s_audio_id: i2s_audio_bus
     dac_type: external
-    sample_rate: 16000
-    bits_per_sample: 16bit
-    channel: left
-    audio_dac: es8311_dac
-    buffer_duration: 100ms
+    i2s_dout_pin:   
+      number: GPIO7 # DIN Pin of the MAX98357A Audio Amplifier
+    channel: stereo
+    buffer_duration: 1000ms
 
 media_player:
   - platform: speaker
@@ -395,7 +259,7 @@ media_player:
     announcement_pipeline:
       speaker: i2s_audio_speaker
       format: FLAC
-      sample_rate: 16000
+      sample_rate: 48000
       num_channels: 1  # S3 Box only has one output channel
     files:
       - id: timer_finished_sound
@@ -405,11 +269,24 @@ media_player:
       - id: ready_sound
         file: ${startup_sound_file}
     on_announcement:
+      # Stop the wake word (mWW or VA) if the mic is capturing
+      - if:
+          condition:
+            - switch.is_on: use_listen_light
+          then:
+            - light.turn_on:
+                id: led
+                blue: 100%
+                red: 0%
+                green: 0%
+                brightness: 100%
+                effect: none
       - if:
           condition:
             - microphone.is_capturing:
           then:
             - script.execute: stop_wake_word
+            # Ensure VA stops before moving on
             - if:
                 condition:
                   - lambda: return id(wake_word_engine_location).state == "In Home Assistant";
@@ -417,20 +294,17 @@ media_player:
                   - wait_until:
                       - not:
                           voice_assistant.is_running:
+      # Since VA isn't running, this is user-intiated media playback. Draw the mute display
       - if:
           condition:
             not:
               voice_assistant.is_running:
           then:
-            - if:
-                condition:
-                  lambda: 'return id(playing_internal_sound);'
-                then:
-                  - lambda: 'id(playing_internal_sound) = false;'
-                else:
-                  - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
-                  - script.execute: draw_display
+ #           - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
+ #           - script.execute: draw_display
     on_idle:
+      # Since VA isn't running, this is the end of user-intiated media playback. Restart the wake word.
+      - script.execute: reset_led
       - if:
           condition:
             not:
@@ -468,6 +342,16 @@ voice_assistant:
   auto_gain: 31dBFS
   volume_multiplier: 2.0
   on_listening:
+    - if:
+        condition:
+          - switch.is_on: use_listen_light
+        then:
+          - light.turn_on:
+              id: led
+              blue: 100%
+              red: 0%
+              green: 0%
+              effect: "Slow Pulse"
     - lambda: id(voice_assistant_phase) = ${voice_assist_listening_phase_id};
     - text_sensor.template.publish:
         id: text_request
@@ -477,6 +361,16 @@ voice_assistant:
         state: "..."
     - script.execute: draw_display
   on_stt_vad_end:
+    - if:
+        condition:
+          - switch.is_on: use_listen_light
+        then:
+          - light.turn_on:
+              id: led
+              blue: 100%
+              red: 0%
+              green: 0%
+              effect: "Fast Pulse"
     - lambda: id(voice_assistant_phase) = ${voice_assist_thinking_phase_id};
     - script.execute: draw_display
   on_stt_end:
@@ -485,22 +379,36 @@ voice_assistant:
         state: !lambda return x;
     - script.execute: draw_display
   on_tts_start:
+    - if:
+        condition:
+          - switch.is_on: use_listen_light
+        then:
+          - light.turn_on:
+              id: led
+              blue: 100%
+              red: 0%
+              green: 0%
+              brightness: 100%
+              effect: none
     - text_sensor.template.publish:
         id: text_response
         state: !lambda return x;
     - lambda: id(voice_assistant_phase) = ${voice_assist_replying_phase_id};
     - script.execute: draw_display
   on_end:
+    # Wait a short amount of time to see if an announcement starts
     - wait_until:
         condition:
           - media_player.is_announcing:
         timeout: 0.5s
+    # Announcement is finished and the I2S bus is free
     - wait_until:
         - and:
             - not:
                 media_player.is_announcing:
             - not:
                 speaker.is_playing:
+    # Restart only mWW if enabled; streaming wake words automatically restart
     - if:
         condition:
           - lambda: return id(wake_word_engine_location).state == "On device";
@@ -509,12 +417,15 @@ voice_assistant:
           - micro_wake_word.start:
     - script.execute: set_idle_or_mute_phase
     - script.execute: draw_display
+    # Clear text sensors
     - text_sensor.template.publish:
         id: text_request
         state: ""
     - text_sensor.template.publish:
         id: text_response
         state: ""
+    - script.execute: reset_led
+
   on_error:
     - if:
         condition:
@@ -531,6 +442,20 @@ voice_assistant:
               else:
                 - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
           - script.execute: draw_display
+    - if:
+        condition:
+          - switch.is_on: use_listen_light
+        then:
+          - light.turn_on:
+              id: led
+              red: 100%
+              green: 0%
+              blue: 0%
+              brightness: 100%
+              effect: none
+    - delay: 2s
+    - script.execute: reset_led
+
   on_client_connected:
     - lambda: id(init_in_progress) = false;
     - script.execute: start_wake_word
@@ -550,12 +475,53 @@ voice_assistant:
     - script.execute: draw_display
   on_timer_finished:
     - switch.turn_on: timer_ringing
+    - if:
+        condition:
+          - switch.is_on: use_listen_light
+        then:
+          - light.turn_on:
+              id: led
+              red: 0%
+              green: 100%
+              blue: 0%
+              brightness: 100%
+              effect: "Fast Pulse"
     - wait_until:
         media_player.is_announcing:
     - lambda: id(voice_assistant_phase) = ${voice_assist_timer_finished_phase_id};
     - script.execute: draw_display
+    - light.turn_off: led
 
 script:
+  - id: reset_led
+    then:
+      - if:
+          condition:
+            - lambda: return id(wake_word_engine_location).state == "On device";
+            - switch.is_on: use_listen_light
+          then:
+            - light.turn_on:
+                id: led
+                red: 100%
+                green: 89%
+                blue: 71%
+                brightness: 30%
+                effect: none
+          else:
+            - if:
+                condition:
+                  - lambda: return id(wake_word_engine_location).state != "On device";
+                  - switch.is_on: use_listen_light
+                then:
+                  - light.turn_on:
+                      id: led
+                      red: 0%
+                      green: 100%
+                      blue: 100%
+                      brightness: 30%
+                      effect: none
+                else:
+                  - light.turn_off: led
   - id: draw_display
     then:
       - if:
@@ -703,6 +669,7 @@ script:
             }
             id(s3_box_lcd).printf(120, 47, id(font_timer), Color::BLACK, "%s", display_string.c_str());
           }
+  # Starts either mWW or the streaming wake word, depending on the configured location
   - id: start_wake_word
     then:
       - if:
@@ -723,6 +690,7 @@ script:
           then:
             - lambda: id(va).set_use_wake_word(true);
             - voice_assistant.start_continuous:
+  # Stops either mWW or the streaming wake word, depending on the configured location
   - id: stop_wake_word
     then:
       - if:
@@ -736,6 +704,7 @@ script:
             lambda: return id(wake_word_engine_location).state == "On device";
           then:
             - micro_wake_word.stop:
+  # Set the voice assistant phase to idle or muted, depending on if the software mute switch is activated
   - id: set_idle_or_mute_phase
     then:
       - if:
@@ -746,14 +715,13 @@ script:
           else:
             - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
 
-  # Script executed when we want to play sounds on the device.
+
   - id: play_sound
     parameters:
       priority: bool
       sound_file: "audio::AudioFile*"
     then:
       - lambda: |-
-          id(playing_internal_sound) = true;
           if (priority) {
             id(external_media_player)
               ->make_call()
@@ -767,6 +735,21 @@ script:
           }
 
 switch:
+  - platform: ld2410
+    engineering_mode:
+      name: "engineering mode"
+    bluetooth:
+      name: "control bluetooth"
+  - platform: template
+    name: Use listen light
+    id: use_listen_light
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_ON
+    entity_category: config
+    on_turn_on:
+      - script.execute: reset_led
+    on_turn_off:
+      - script.execute: reset_led
   - platform: template
     name: Mute
     id: mute
@@ -788,6 +771,7 @@ switch:
     internal: true
     restore_mode: ALWAYS_OFF
     on_turn_off:
+      # Turn off the repeat mode and disable the pause between playlist items
       - lambda: |-
               id(external_media_player)
                 ->make_call()
@@ -795,9 +779,11 @@ switch:
                 .set_announcement(true)
                 .perform();
               id(external_media_player)->set_playlist_delay_ms(speaker::AudioPipelineType::ANNOUNCEMENT, 0);
+      # Stop playing the alarm
       - media_player.stop:
           announcement: true
     on_turn_on:
+      # Turn on the repeat mode and pause for 1000 ms between playlist items/repeats
       - lambda: |-
             id(external_media_player)
               ->make_call()
@@ -810,13 +796,6 @@ switch:
           announcement: true
       - delay: 15min
       - switch.turn_off: timer_ringing
-
-  - platform: gpio
-    name: Speaker Enable
-    icon: "mdi:speaker"
-    entity_category: config
-    pin: GPIO${speaker_enable_pin}
-    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: template
     id: wake_sound
@@ -841,18 +820,6 @@ switch:
     entity_category: config
     optimistic: true
     restore_mode: RESTORE_DEFAULT_ON
-
-  - platform: template
-    id: show_battery_status
-    name: Show Battery Status
-    icon: "mdi:card-text-outline"
-    entity_category: config
-    optimistic: true
-    restore_mode: RESTORE_DEFAULT_ON
-    on_turn_on:
-      - script.execute: draw_display
-    on_turn_off:
-      - script.execute: draw_display
 
 select:
   - platform: template
@@ -898,6 +865,12 @@ select:
                       then:
                         - micro_wake_word.start
 
+  - platform: ld2410
+    distance_resolution:
+      name: "distance resolution"
+    baud_rate:
+      name: "baud rate"
+
 globals:
   - id: init_in_progress
     type: bool
@@ -919,14 +892,6 @@ globals:
   - id: global_is_timer
     type: bool
     restore_value: false
-  - id: last_battery_percent
-    type: int
-    restore_value: no
-    initial_value: '-1'
-  - id: playing_internal_sound
-    type: bool
-    restore_value: no
-    initial_value: 'false'
   - id: boot_sound_played
     type: bool
     restore_value: no
@@ -991,7 +956,7 @@ font:
       weight: 300
       italic: true
     id: font_request
-    size: 15
+    size: 10
     glyphsets:
       - ${font_glyphsets}
   - file:
@@ -999,15 +964,7 @@ font:
       family: ${font_family}
       weight: 300
     id: font_response
-    size: 15
-    glyphsets:
-      - ${font_glyphsets}
-  - file:
-      type: gfonts
-      family: ${font_family}
-      weight: 300
-    id: font_battery
-    size: 24
+    size: 10
     glyphsets:
       - ${font_glyphsets}
   - file:
@@ -1058,40 +1015,25 @@ color:
   - id: paused_timer_color
     hex: "3b89e3"
 
-spi:
-  - id: spi_bus
-    clk_pin: GPIO${spi_clk_pin}
-    mosi_pin: GPIO${spi_mosi_pin}
+i2c:
+  sda: 41
+  scl: 42
+  frequency: 800kHz
 
 display:
-  - platform: ili9xxx
+  - platform: ssd1306_i2c
     id: s3_box_lcd
-    model: ${displaymodel}
-    invert_colors: ${invertcolors}
-    data_rate: 40MHz
-    cs_pin: GPIO${lcd_cs_pin}
-    dc_pin: GPIO${lcd_dc_pin}
-    reset_pin:
-      number: GPIO${lcd_reset_pin}
-#      inverted: false
-    update_interval: never
-    dimensions:
-        height: ${imageheight}
-        width: ${imagewidth}
+    model: "SH1106 128x64"
+    address: 0x3C
+    update_interval: 5s
+    contrast: 60%
+    auto_clear_enabled: true
+
     pages:
       - id: idle_page
         lambda: |-
           it.fill(id(idle_color));
           it.image((it.get_width() / 2), (it.get_height() / 2), id(casita_idle), ImageAlign::CENTER);
-          if (id(show_battery_status).state) {
-            const int box_top = 2;
-            const int box_height = 28;
-            it.filled_rectangle((it.get_width()/2)-40, box_top, 80, box_height, Color::WHITE);
-            it.rectangle((it.get_width()/2)-40, box_top, 80, box_height, Color::BLACK);
-            char battery_text[16];
-            snprintf(battery_text, sizeof(battery_text), "%.0f%%", id(battery_percentage).state);
-            it.printf(it.get_width() / 2, 4, id(font_battery), Color::BLACK, TextAlign::TOP_CENTER, "%s", battery_text);
-          }
           id(draw_timer_timeline).execute();
           id(draw_active_timer_widget).execute();
       - id: listening_page
@@ -1104,23 +1046,19 @@ display:
           it.fill(id(thinking_color));
           it.image((it.get_width() / 2), (it.get_height() / 2), id(casita_thinking), ImageAlign::CENTER);
           if (id(show_text).state) {
-            it.filled_rectangle(20 , 20 , 200 , 30 , Color::WHITE );
-            it.rectangle(20 , 20 , 200 , 30 , Color::BLACK );
-            it.printf(30, 25, id(font_request), Color::BLACK, "%s", id(text_request).state.c_str());
+            it.filled_rectangle(14 , 20 , 100 , 14 , Color::WHITE );
+            it.rectangle(14 , 20 , 100 , 14 , Color::BLACK );
+            it.printf(16, 22, id(font_request), Color::BLACK, "%s", id(text_request).state.c_str());
           }
           id(draw_timer_timeline).execute();
       - id: replying_page
         lambda: |-
           it.fill(id(replying_color));
           it.image((it.get_width() / 2), (it.get_height() / 2), id(casita_replying), ImageAlign::CENTER);
-          int y_offset = 190; // default for 240px display
-          if (it.get_height() == 320) {
-            y_offset = 270; // Move box lower for 320px tall screens
-          }
           if (id(show_text).state) {
-            it.filled_rectangle(20, y_offset, 200, 30, Color::WHITE);
-            it.rectangle(20, y_offset, 200, 30, Color::BLACK);
-            it.printf(30, y_offset + 5, id(font_response), Color::BLACK, "%s", id(text_response).state.c_str());
+            it.filled_rectangle(14, 50, 100, 14, Color::WHITE);
+            it.rectangle(14, 50, 100, 14, Color::BLACK);
+            it.printf(16, 52, id(font_request), Color::BLACK, "%s", id(text_response).state.c_str());
           }
           id(draw_timer_timeline).execute();
       - id: timer_finished_page
@@ -1147,3 +1085,119 @@ display:
           it.image((it.get_width() / 2), (it.get_height() / 2), id(casita_muted), ImageAlign::CENTER);
           id(draw_timer_timeline).execute();
           id(draw_active_timer_widget).execute();
+
+sensor:
+  - platform: ld2410
+    light:
+      name: light
+    moving_distance:
+      name: Moving Distance
+    still_distance:
+      name: Still Distance
+    moving_energy:
+      name: Move Energy
+    still_energy:
+      name: Still Energy
+    detection_distance:
+      name: Detection Distance
+    g0:
+      move_energy:
+        name: g0 move energy
+      still_energy:
+        name: g0 still energy
+    g1:
+      move_energy:
+        name: g1 move energy
+      still_energy:
+        name: g1 still energy
+    g2:
+      move_energy:
+        name: g2 move energy
+      still_energy:
+        name: g2 still energy
+    g3:
+      move_energy:
+        name: g3 move energy
+      still_energy:
+        name: g3 still energy
+    g4:
+      move_energy:
+        name: g4 move energy
+      still_energy:
+        name: g4 still energy
+    g5:
+      move_energy:
+        name: g5 move energy
+      still_energy:
+        name: g5 still energy
+    g6:
+      move_energy:
+        name: g6 move energy
+      still_energy:
+        name: g6 still energy
+    g7:
+      move_energy:
+        name: g7 move energy
+      still_energy:
+        name: g7 still energy
+    g8:
+      move_energy:
+        name: g8 move energy
+      still_energy:
+        name: g8 still energy
+
+number:
+  - platform: ld2410
+    timeout:
+      name: timeout
+    light_threshold:
+      name: light threshold
+    max_move_distance_gate:
+      name: max move distance gate
+    max_still_distance_gate:
+      name: max still distance gate
+    g0:
+      move_threshold:
+        name: g0 move threshold
+      still_threshold:
+        name: g0 still threshold
+    g1:
+      move_threshold:
+        name: g1 move threshold
+      still_threshold:
+        name: g1 still threshold
+    g2:
+      move_threshold:
+        name: g2 move threshold
+      still_threshold:
+        name: g2 still threshold
+    g3:
+      move_threshold:
+        name: g3 move threshold
+      still_threshold:
+        name: g3 still threshold
+    g4:
+      move_threshold:
+        name: g4 move threshold
+      still_threshold:
+        name: g4 still threshold
+    g5:
+      move_threshold:
+        name: g5 move threshold
+      still_threshold:
+        name: g5 still threshold
+    g6:
+      move_threshold:
+        name: g6 move threshold
+      still_threshold:
+        name: g6 still threshold
+    g7:
+      move_threshold:
+        name: g7 move threshold
+      still_threshold:
+        name: g7 still threshold
+    g8:
+      move_threshold:
+        name: g8 move threshold
+      still_threshold:
+        name: g8 still threshold
