@@ -1,43 +1,17 @@
 substitutions:
-  name: esphome-web-e9f624
-  friendly_name: Xiaozhi Taichi Pi v1
+  name: esphome-web-ac9df8
+  friendly_name: Xiaozhi Watch
 
-## VERSION 1.01 dev. ##
-## ADDED; clock when idle more than 30 seconds.
-## ADDED; virtual touch, so same functionality as touch is available from home assistant (start, stop, stop timer alarm)
-## ADDED: use og playing.png emo when playing music on mediaplayer, still changes to clock after 30 seconds.
-## ADDED: timer ringing entity so the alert can trigger other things through automations.
-## ADDED: longer request and response entities so they can be shown on dashboards, limited to 255 letters though.
-## FIX: timer pages to be dynamic for different screen sizes
-##
-## VERSION 1.00 ##
-## First working code
+### NOTICE! this is for the ESP32-S3-Touch-AMOLED-2.06 ###
 
 ## SETTINGS ######################################################################################################################################
 
-  imagemodel: "Gwen" # options are:
+  imagemodel: "Gwen" # (options are: Gwen)
+  startup_sound: "Home_Connected" # (options are: available,Home_Connected)
 
-##################################################################################################################################################
-# Alfred, Astrobot, Buzz, Casita, Cybergirl, Dory, EVE, Eyes, Eyes2, GLaDOS, Girl1, Guy1, Guy2, Gwen, HA-character, Harley, Jarvis, Luffy,
-# Mario, Max, Prime, Robochibi, Robocop, Robot, Robotgirl, Shaun
-##################################################################################################################################################
-
-  startup_sound: "Home_Connected" # (options are: available,Home_Connected,Computer_Ready)
-
-  clock_timezone: "Europe/Copenhagen"
-
-  display_platform: "mipi_spi"
-  display_model: "JC3636W518"
-  imagewidth: "360"
-  imageheight: "360"
-  rotate_display: "180"
-
-## CUSTOM SETTINGS ###############################################################################################################################
-
-  clock_background_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/Other/${imagewidth}x${imageheight}/clock.png
-
-## To use your own clock background, place it in /homeassistant/esphome/images/
-## Then change this path to "images/clock.png"
+  imagewidth: "410" # GC9A01A (Ball v2 & Muma & Puck) "240"
+  imageheight: "502" # GC9A01A (Ball v2 & Muma & Puck) "240"
+  rotate_display: "180" # Set to "180" to flip the display
 
 ##################################################################################################################################################
 
@@ -48,8 +22,7 @@ substitutions:
   replying_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/replying.png
   error_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/error.png
   timer_finished_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/timer_finished.png
-  mute_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/mute.png
-  playing_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/playing.png
+  mute_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/Mute/${imagewidth}x${imageheight}/mute.png
 
   startup_sound_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/${startup_sound}.flac
 
@@ -69,9 +42,13 @@ substitutions:
   voice_assist_muted_phase_id: "12"
   voice_assist_timer_finished_phase_id: "20"
 
+  # These unique characters have been extracted from every test file of every language available on https://github.com/home-assistant/intents (14 March 2024)
+  # However, the Figtree font only contains Latin characters, so there is no point using this... unlessyou change the font configuration accordingly.
   allowed_characters: " !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrstuvwxyz{|}°²³µ¿ÁÂÄÅÉÖÚßàáâãäåæçèéêëìíîðñòóôõöøùúûüýþāăąćčďĐđēėęěğĮįıļľŁłńňőřśšťũūůűųźŻżŽžơưșțΆΈΌΐΑΒΓΔΕΖΗΘΚΜΝΠΡΣΤΥΦάέήίαβγδεζηθικλμνξοπρςστυφχψωϊόύώАБВГДЕЖЗИКЛМНОПРСТУХЦЧШЪЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяёђєіїјљњћאבגדהוזחטיכלםמןנסעפץצקרשת،ءآأإئابةتجحخدذرزسشصضطظعغفقكلمنهوىيٹپچڈکگںھہیےংকচতধনফবযরলশষস়ািু্చయలిెొ్ംഅആഇഈഉഎഓകഗങചജഞടഡണതദധനപഫബഭമയരറലളവശസഹാിീുൂെേൈ്ൺൻർൽൾაბგდევზთილმნოპრსტუფქყშჩცძჭხạảấầẩậắặẹẽếềểệỉịọỏốồổỗộớờởợụủứừửữựỳ—、一上不个中为主乾了些亮人任低佔何作供依侧係個側偵充光入全关冇冷几切到制前動區卧厅厨及口另右吊后吗启吸呀咗哪唔問啟嗎嘅嘛器圍在场執場外多大始安定客室家密寵对將小少左已帘常幫幾库度庫廊廚廳开式後恆感態成我戲戶户房所扇手打执把拔换掉控插摄整斯新明是景暗更最會有未本模機檯櫃欄次正氏水沒没洗活派温測源溫漏潮激濕灯為無煙照熱燈燥物狀玄现現瓦用發的盞目着睡私空窗立笛管節簾籬紅線红罐置聚聲脚腦腳臥色节著行衣解設調請謝警设调走路車车运連遊運過道邊部都量鎖锁門閂閉開關门闭除隱離電震霧面音頂題顏颜風风食餅餵가간감갔강개거게겨결경고공과관그금급기길깥꺼껐꼽나난내네놀누는능니다닫담대더데도동됐되된됨둡드든등디때떤뜨라래러렇렌려로료른를리림링마많명몇모무문물뭐바밝방배변보부불블빨뽑사산상색서설성세센션소쇼수스습시신실싱아안않알았애야어얼업없었에여연열옆오온완외왼요운움워원위으은을음의이인일임입있작잠장재전절정제져조족종주줄중줘지직진짐쪽차창천최추출충치침커컴켜켰쿠크키탁탄태탬터텔통트튼티파팬퍼폰표퓨플핑한함해했행혀현화활후휴힘，？"
 
+  # Add support for non-unicode characters by using better glyphset
   font_glyphsets: "GF_Latin_Core"
+  # for Greek use "Noto Sans" for other languages use a compatible font family
   font_family: Figtree
 
 esphome:
@@ -109,13 +86,16 @@ psram:
 api:
   on_client_connected:
     - script.execute: draw_display
-    - lambda: |-
-        if (!id(boot_sound_played)) {
-          id(boot_sound_played) = true;
-          if (id(startup_sound_switch).state) {
-            id(play_sound)->execute(true, id(ready_sound));
-          }
-        }
+    - if:
+        condition:
+          switch.is_on: startup_sound_switch
+        then:
+          - delay: 300ms
+          - script.execute:
+              id: play_sound
+              priority: true
+              sound_file: !lambda return id(ready_sound);
+          - delay: 300ms
   on_client_disconnected:
     - script.execute: draw_display
 
@@ -125,11 +105,17 @@ ota:
 
 logger:
   hardware_uart: USB_SERIAL_JTAG
+  level: DEBUG
+  logs:
+    sensor: NONE
+    qmi8658: WARN
+    i2c.idf: WARN
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   ap:
+    ssid: "Esp32S3-1 Fallback Hotspot"
     password: "RZ7D3EzJdPM6"
   on_connect:
     - script.execute: draw_display
@@ -138,36 +124,232 @@ wifi:
 
 captive_portal:
 
-time:
-  - platform: sntp
-    id: sntp_time
-    timezone: ${clock_timezone}
+sensor:
+  - platform: template
+    id: pitch_deg
+    name: "QMI8658 Pitch"
+    unit_of_measurement: "°"
+    accuracy_decimals: 1
+    state_class: measurement
+  - platform: template
+    id: roll_deg
+    name: "QMI8658 Roll"
+    unit_of_measurement: "°"
+    accuracy_decimals: 1
+    state_class: measurement
+  - platform: template
+    id: acc_x
+    name: "QMI8658 Accel X"
+    unit_of_measurement: "m/s²"
+    accuracy_decimals: 3
+    state_class: measurement
+  - platform: template
+    id: acc_y
+    name: "QMI8658 Accel Y"
+    unit_of_measurement: "m/s²"
+    accuracy_decimals: 3
+    state_class: measurement
+  - platform: template
+    id: acc_z
+    name: "QMI8658 Accel Z"
+    unit_of_measurement: "m/s²"
+    accuracy_decimals: 3
+    state_class: measurement
+
+  - platform: template
+    id: gyro_x
+    name: "QMI8658 Gyro X"
+    unit_of_measurement: "rad/s"
+    accuracy_decimals: 3
+    state_class: measurement
+  - platform: template
+    id: gyro_y
+    name: "QMI8658 Gyro Y"
+    unit_of_measurement: "rad/s"
+    accuracy_decimals: 3
+    state_class: measurement
+  - platform: template
+    id: gyro_z
+    name: "QMI8658 Gyro Z"
+    unit_of_measurement: "rad/s"
+    accuracy_decimals: 3
+    state_class: measurement
+
+  - platform: template
+    id: imu_temp
+    name: "QMI8658 Temperature"
+    unit_of_measurement: "°C"
+    accuracy_decimals: 2
+    device_class: temperature
+    state_class: measurement
+
+  - platform: template
+    id: bat_v
+    name: "Battery Voltage"
+    unit_of_measurement: "V"
+    accuracy_decimals: 2
+    device_class: voltage
+    state_class: measurement
+  - platform: template
+    id: bat_pct
+    name: "Battery Level"
+    unit_of_measurement: "%"
+    accuracy_decimals: 0
+    device_class: battery
+    state_class: measurement
+
+interval:
+  - interval: 100ms
+    then:
+      - lambda: |-
+          using esphome::i2c::ERROR_OK;
+
+          constexpr uint8_t QMI_ADDR = 0x6B;  // IMU
+          constexpr uint8_t AXP_ADDR = 0x34;  // PMIC
+
+          // --- I2C helpers (STOP-then-READ) ---
+          auto write_u8 = [&](uint8_t reg, uint8_t value) -> bool {
+            uint8_t buf[2] = {reg, value};
+            return id(bus_a)->write(QMI_ADDR, buf, 2) == ERROR_OK;
+          };
+          auto read_block = [&](uint8_t reg, uint8_t *data, uint8_t len) -> bool {
+            if (id(bus_a)->write(QMI_ADDR, &reg, 1) != ERROR_OK) return false;
+            delayMicroseconds(300);
+            return id(bus_a)->read(QMI_ADDR, data, len) == ERROR_OK;
+          };
+          auto read_block_retry = [&](uint8_t reg, uint8_t *data, uint8_t len) -> bool {
+            if (read_block(reg, data, len)) return true;
+            delay(2);
+            return read_block(reg, data, len);
+          };
+          auto axp_read = [&](uint8_t reg, uint8_t *data, uint8_t len) -> bool {
+            if (id(bus_a)->write(AXP_ADDR, &reg, 1) != ERROR_OK) return false;
+            delayMicroseconds(200);
+            return id(bus_a)->read(AXP_ADDR, data, len) == ERROR_OK;
+          };
+          auto axp_write_u8 = [&](uint8_t reg, uint8_t val) -> bool {
+            uint8_t buf[2] = {reg, val};
+            return id(bus_a)->write(AXP_ADDR, buf, 2) == ERROR_OK;
+          };
+
+          // --- IMU one-time init (with brief power-up wait) ---
+          static bool inited = false;
+          static uint32_t t0 = 0;
+          if (!inited) {
+            if (t0 == 0) t0 = millis();
+            if (millis() - t0 < 800) return;
+
+            // WHO_AM_I (expect 0x05)
+            uint8_t who = 0;
+            if (!read_block_retry(0x00, &who, 1) || who != 0x05) {
+              ESP_LOGW("qmi8658", "WHO_AM_I=0x%02X (expect 0x05)", who);
+              return;
+            }
+
+            // Init: auto-increment, ±8g / ±512 dps @125 Hz, LPFs on, enable a+g
+            write_u8(0x02, (1 << 6));                          // CTRL1
+            write_u8(0x03, (0b010 << 4) | (0b0100));           // CTRL2 accel
+            write_u8(0x04, (0b101 << 4) | (0b0100));           // CTRL3 gyro
+            write_u8(0x06, (1 << 4) | (0b10 << 1) | (1 << 0)); // CTRL5
+            write_u8(0x08, (1 << 1) | (1 << 0));               // CTRL7
+
+            // Ensure AXP2101 fuel-gauge is enabled (reg 0x18 bit3)
+            uint8_t r18 = 0;
+            if (axp_read(0x18, &r18, 1) && !(r18 & 0x08)) axp_write_u8(0x18, r18 | 0x08);
+
+            inited = true;
+          }
+
+          // --- read TEMP(0x33-0x34), ACC(0x35-0x3A), GYR(0x3B-0x40) ---
+          uint8_t raw[14] = {0};
+          if (!read_block_retry(0x33, raw, sizeof(raw))) return;
+
+          auto s16 = [](uint8_t lo, uint8_t hi) -> int16_t { return (int16_t)((hi << 8) | lo); };
+
+          int8_t  t_hi = (int8_t)raw[1];
+          float   t_c  = (float)t_hi + (raw[0] / 256.0f);
+
+          int16_t axr = s16(raw[2],  raw[3]);
+          int16_t ayr = s16(raw[4],  raw[5]);
+          int16_t azr = s16(raw[6],  raw[7]);
+          int16_t gxr = s16(raw[8],  raw[9]);
+          int16_t gyr = s16(raw[10], raw[11]);
+          int16_t gzr = s16(raw[12], raw[13]);
+
+          // Convert to SI units
+          const float g = 9.80665f;
+          const float accel_range_g = 8.0f;
+          const float gyro_range_dps = 512.0f;
+
+          float acc_cnt_per_g = 32768.0f / accel_range_g;
+          float ax = (axr / acc_cnt_per_g) * g;
+          float ay = (ayr / acc_cnt_per_g) * g;
+          float az = (azr / acc_cnt_per_g) * g;
+
+          float dps_per_count = gyro_range_dps / 32768.0f;
+          const float deg2rad = 3.14159265358979323846f / 180.0f;
+          float gx = gxr * dps_per_count * deg2rad;
+          float gy = gyr * dps_per_count * deg2rad;
+          float gz = gzr * dps_per_count * deg2rad;
+
+          // Pitch & Roll
+          float ax_g = ax / g, ay_g = ay / g, az_g = az / g;
+          float roll_val  = atan2f(ay_g, az_g) * 180.0f / 3.14159265358979323846f;
+          float pitch_val = atan2f(-ax_g, sqrtf(ay_g*ay_g + az_g*az_g)) * 180.0f / 3.14159265358979323846f;
+
+          // Publish IMU + angles
+          id(imu_temp).publish_state(t_c);
+          id(acc_x).publish_state(ax);
+          id(acc_y).publish_state(ay);
+          id(acc_z).publish_state(az);
+          id(gyro_x).publish_state(gx);
+          id(gyro_y).publish_state(gy);
+          id(gyro_z).publish_state(gz);
+          id(roll_deg).publish_state(roll_val);
+          id(pitch_deg).publish_state(pitch_val);
+
+          // --- AXP2101 battery & status (throttled to ~1 Hz) ---
+          static uint32_t last_axp = 0;
+          uint32_t now_ms = millis();
+          if (now_ms - last_axp >= 1000) {
+            last_axp = now_ms;
+
+            // VBAT (14-bit, 1 mV/LSB) at 0x34/0x35
+            uint8_t vbat_hi = 0, vbat_lo = 0;
+            if (axp_read(0x34, &vbat_hi, 1) && axp_read(0x35, &vbat_lo, 1)) {
+              uint16_t raw14 = ((vbat_hi & 0x3F) << 8) | vbat_lo;
+              id(bat_v).publish_state(raw14 / 1000.0f);
+            }
+
+            // Fuel-gauge percentage at 0xA4 (0–100%)
+            uint8_t pct = 0;
+            if (axp_read(0xA4, &pct, 1)) {
+              if (pct > 100) pct = 100;
+              id(bat_pct).publish_state((float)pct);
+            }
+
+            // VBUS good (reg 0x00 bit5)
+            uint8_t st1 = 0;
+            if (axp_read(0x00, &st1, 1)) {
+              bool vbus_good = (st1 & (1 << 5));
+              id(usb_power).publish_state(vbus_good);
+            }
+
+            // Charging status (reg 0x01 bits [2:0])
+            uint8_t st2 = 0;
+            if (axp_read(0x01, &st2, 1)) {
+              uint8_t cs = st2 & 0x07;
+              // 000 tri_charge, 001 pre_charge, 010 CC, 011 CV => charging
+              // 100 charge done, 101 not charging
+              bool chg = (cs <= 0b011);
+              id(charging).publish_state(chg);
+            }
+          }
 
 button:
   - platform: factory_reset
     id: factory_reset_btn
     internal: true
-
-  - platform: template
-    name: "Virtual Touch"
-    id: virtual_touch
-    on_press:
-      - script.execute: handle_screen_tap
-
-number:
-  - platform: template
-    id: clock_delay_seconds
-    name: "Clock Screensaver Delay"
-    unit_of_measurement: "s"
-    icon: "mdi:timer-outline"
-    entity_category: config
-    optimistic: true
-    restore_value: true
-    mode: box
-    min_value: 5
-    max_value: 600
-    step: 5
-    initial_value: 30
 
 binary_sensor:
   - platform: template
@@ -179,7 +361,6 @@ binary_sensor:
           - ON for 40ms to 400ms
           - OFF for at least 330ms
         then:
-          - script.execute: reset_screensaver
           - if:
               condition:
                 switch.is_on: timer_ringing
@@ -197,9 +378,7 @@ binary_sensor:
                           then:
                             - voice_assistant.start:
                           else:
-                            - voice_assistant.stop:
-          - display.page.show: idle_page
-          - component.update: main_display
+                            - voice_assistant.stop:  
 
   - platform: gpio
     pin:
@@ -214,7 +393,6 @@ binary_sensor:
           - ON for at least 50ms
           - OFF for at least 50ms
         then:
-          - script.execute: reset_screensaver
           - if:
               condition:
                 switch.is_on: timer_ringing
@@ -226,65 +404,68 @@ binary_sensor:
                       not:
                         voice_assistant.is_running:
                     then:
-                      - voice_assistant.start:
+                      - voice_assistant.start:                     
                     else:
-                      - voice_assistant.stop:
-          - display.page.show: idle_page
-          - component.update: main_display
+                      - voice_assistant.stop:                     
       - timing:
           - ON for at least 10s
         then:
           - button.press: factory_reset_btn
 
   - platform: template
-    name: "Timer Ringing Active"
-    id: timer_ringing_active
-    device_class: sound
-    lambda: |-
-      return id(timer_ringing).state;
+    id: usb_power
+    name: "USB Power Present"
+    device_class: power
 
-output:
-  - platform: ledc
-    pin: 15
-    id: backlight_output
+  - platform: template
+    id: charging
+    name: "Battery Charging"
+    device_class: battery_charging
 
-light:
-  - platform: monochromatic
-    id: Sled
-    name: Screen
-    icon: "mdi:television"
-    entity_category: config
-    output: backlight_output
-    restore_mode: ALWAYS_ON
-    default_transition_length: 250ms
+i2c:
+  - id: bus_a
+    scl: GPIO14
+    sda: GPIO15
+    scan: true
 
 i2s_audio:
-  - id: i2s_mic # For microphone
-    i2s_lrclk_pin: GPIO45 #WS 
-    i2s_bclk_pin: GPIO42  #SCK
-  - id: i2s_audio_bus # For speaker
-    i2s_lrclk_pin: GPIO16
-    i2s_bclk_pin: GPIO18
-    i2s_mclk_pin: GPIO21
+  - id: i2s_audio_bus
+    i2s_lrclk_pin: GPIO45
+    i2s_bclk_pin: GPIO41
+    i2s_mclk_pin: GPIO16
+
+audio_adc:
+  - platform: es7210
+    i2c_id: bus_a
+    id: es7210_adc
+    bits_per_sample: 16bit
+    sample_rate: 16000
+
+audio_dac:
+  - platform: es8311
+    i2c_id: bus_a
+    id: es8311_dac
+    bits_per_sample: 16bit
+    sample_rate: 48000
 
 microphone:
   - platform: i2s_audio
     id: box_mic
-    i2s_audio_id: i2s_mic
-    i2s_din_pin: GPIO46
-    adc_type: external
-    channel: left
-    pdm: false
     sample_rate: 16000
+    i2s_din_pin: GPIO42
     bits_per_sample: 16bit
+    adc_type: external
 
 speaker:
   - platform: i2s_audio
     id: box_speaker
-    i2s_audio_id: i2s_audio_bus
-    i2s_dout_pin: GPIO17
+    i2s_dout_pin: GPIO40
     dac_type: external
-    channel: stereo
+    sample_rate: 48000
+    bits_per_sample: 16bit
+    channel: left
+    audio_dac: es8311_dac
+    buffer_duration: 100ms
 
 media_player:
   - platform: speaker
@@ -293,16 +474,15 @@ media_player:
     announcement_pipeline:
       speaker: box_speaker
       format: FLAC
-      sample_rate: 16000
+      sample_rate: 48000
       num_channels: 1
     files:
       - id: timer_finished_sound
-        file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/timer_finished.flac
+        file: https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/timer_finished.flac
       - id: wake_word_triggered_sound
-        file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/wake_word_triggered.flac
+        file: https://github.com/esphome/home-assistant-voice-pe/raw/dev/sounds/wake_word_triggered.flac
       - id: ready_sound
         file: ${startup_sound_file}
-
     on_announcement:
       # Stop the wake word (mWW or VA) if the mic is capturing
       - if:
@@ -318,19 +498,19 @@ media_player:
                   - wait_until:
                       - not:
                           voice_assistant.is_running:
-
-      # Distinguish internal vs external regardless of VA running
       - if:
           condition:
-            lambda: 'return id(playing_internal_sound);'
+            not:
+              voice_assistant.is_running:
           then:
-            # Internal sound (wake, etc)
-            - lambda: 'id(playing_internal_sound) = false;'
-          else:
-            # External (from Home Assistant): show Now Playing
-            - script.execute: reset_screensaver
-            - display.page.show: now_playing_page
-            - component.update: main_display
+            - if:
+                condition:
+                  lambda: 'return id(playing_internal_sound);'
+                then:
+                  - lambda: 'id(playing_internal_sound) = false;'
+                else:
+                  - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
+                  - script.execute: draw_display
 
     on_idle:
       - if:
@@ -349,7 +529,6 @@ micro_wake_word:
     - hey_jarvis
     - alexa
   on_wake_word_detected:
-    - script.execute: reset_screensaver
     - if:
         condition:
           switch.is_on: wake_sound
@@ -371,14 +550,7 @@ voice_assistant:
   auto_gain: 31dBFS
   volume_multiplier: 2.0
   on_listening:
-    - script.execute: reset_screensaver
     - lambda: id(voice_assistant_phase) = ${voice_assist_listening_phase_id};
-    - text_sensor.template.publish:
-        id: text_request_full
-        state: "..."
-    - text_sensor.template.publish:
-        id: text_response_full
-        state: "..."
     - text_sensor.template.publish:
         id: text_request
         state: "..."
@@ -393,20 +565,12 @@ voice_assistant:
     - text_sensor.template.publish:
         id: text_request
         state: !lambda return x;
-    - text_sensor.template.publish:
-        id: text_request_full
-        state: !lambda return x;
     - script.execute: draw_display
   on_tts_start:
-    - script.execute: reset_screensaver
     - text_sensor.template.publish:
         id: text_response
         state: !lambda return x;
-    - text_sensor.template.publish:
-        id: text_response_full
-        state: !lambda return x;
     - lambda: id(voice_assistant_phase) = ${voice_assist_replying_phase_id};
-    - lambda: 'id(playing_internal_sound) = true;'
     - script.execute: draw_display
   on_end:
     # Wait a short amount of time to see if an announcement starts
@@ -437,12 +601,6 @@ voice_assistant:
     - text_sensor.template.publish:
         id: text_response
         state: ""
-#    - text_sensor.template.publish:
-#        id: text_request_full
-#        state: ""
-#    - text_sensor.template.publish:
-#        id: text_response_full
-#        state: ""
   on_error:
     - if:
         condition:
@@ -469,7 +627,6 @@ voice_assistant:
     - lambda: id(voice_assistant_phase) = ${voice_assist_not_ready_phase_id};
     - script.execute: draw_display
   on_timer_started:
-    - script.execute: reset_screensaver
     - script.execute: draw_display
   on_timer_cancelled:
     - script.execute: draw_display
@@ -483,40 +640,6 @@ voice_assistant:
         media_player.is_announcing:
     - lambda: id(voice_assistant_phase) = ${voice_assist_timer_finished_phase_id};
     - script.execute: draw_display
-
-interval:
-  - interval: 1s
-    then:
-      - if:
-          condition:
-            and:
-              - lambda: return id(voice_assistant_phase) == ${voice_assist_idle_phase_id};
-              - switch.is_off: mute
-              - lambda: return id(clock_enabled).state;   # screensaver enabled?
-          then:
-            - lambda: |-
-                id(idle_seconds)++;
-                // Use HA-configured delay (cast to int)
-                int delay_s = (int) id(clock_delay_seconds).state;
-                delay_s = delay_s <= 0 ? 30 : delay_s; // safety fallback
-                if (id(idle_seconds) >= delay_s && !id(show_clock)) {
-                  id(show_clock) = true;
-                  id(main_display).show_page(clock_page);
-                  id(main_display).update();
-                }
-          else:
-            - lambda: |-
-                if (id(show_clock)) {
-                  id(show_clock) = false;
-                }
-                id(idle_seconds) = 0;
-
-      # Keep the clock ticking every second when active
-      - if:
-          condition:
-            lambda: return id(show_clock);
-          then:
-            - component.update: main_display
 
 script:
   - id: draw_display
@@ -534,14 +657,6 @@ script:
                         api.connected:
                       then:
                         - lambda: |
-                            // Screensaver clock while idle (only if enabled)
-                            if (id(voice_assistant_phase) == ${voice_assist_idle_phase_id}
-                                && id(show_clock)
-                                && id(clock_enabled).state) {
-                              id(main_display).show_page(clock_page);
-                              id(main_display).update();
-                              return;
-                            }
                             switch(id(voice_assistant_phase)) {
                               case ${voice_assist_listening_phase_id}:
                                 id(main_display).show_page(listening_page);
@@ -584,7 +699,6 @@ script:
           else:
             - display.page.show: initializing_page
             - component.update: main_display
-
 
   - id: fetch_first_active_timer
     then:
@@ -633,93 +747,49 @@ script:
 
   - id: draw_timer_timeline
     then:
-      - lambda: |-
-          // Dynamically center a bottom progress bar
-          const int W = id(main_display).get_width();
-          const int H = id(main_display).get_height();
-
-          const int padding = 20;         // left/right margin
-          const int bar_h   = 15;         // total bar height
-          const int bar_w   = W - (padding * 2);
-          const int x       = (W - bar_w) / 2;
-          const int y       = H - (bar_h + 15);   // 15px above the bottom edge
-          const int fill_h  = bar_h - 2;
-
+      - lambda: |
           id(check_if_timers_active).execute();
           id(check_if_timers).execute();
-
-          if (id(global_is_timer_active)) {
+          if (id(global_is_timer_active)){
             id(fetch_first_active_timer).execute();
-            int filled = round(
-              bar_w * id(global_first_active_timer).seconds_left
-              / max(id(global_first_active_timer).total_seconds, static_cast<uint32_t>(1))
-            );
-            // background
-            id(main_display).filled_rectangle(x, y, bar_w, bar_h, Color::WHITE);
-            // fill
-            if (filled > 0) {
-              id(main_display).filled_rectangle(x, y + 1, filled, fill_h, id(active_timer_color));
+            int active_pixels = round( 320 * id(global_first_active_timer).seconds_left / max(id(global_first_active_timer).total_seconds , static_cast<uint32_t>(1)) );
+            if (active_pixels > 0){
+              id(main_display).filled_rectangle(0 , 225 , 240 , 15 , Color::WHITE );
+              id(main_display).filled_rectangle(0 , 226 , active_pixels , 13 , id(active_timer_color) );
             }
-          } else if (id(global_is_timer)) {
+          } else if (id(global_is_timer)){
             id(fetch_first_timer).execute();
-            int filled = round(
-              bar_w * id(global_first_timer).seconds_left
-              / max(id(global_first_timer).total_seconds, static_cast<uint32_t>(1))
-            );
-            id(main_display).filled_rectangle(x, y, bar_w, bar_h, Color::WHITE);
-            if (filled > 0) {
-              id(main_display).filled_rectangle(x, y + 1, filled, fill_h, id(paused_timer_color));
+            int active_pixels = round( 320 * id(global_first_timer).seconds_left / max(id(global_first_timer).total_seconds , static_cast<uint32_t>(1)));
+            if (active_pixels > 0){
+              id(main_display).filled_rectangle(0 , 225 , 240 , 15 , Color::WHITE );
+              id(main_display).filled_rectangle(0 , 226 , active_pixels , 13 , id(paused_timer_color) );
             }
           }
-
   - id: draw_active_timer_widget
     then:
-      - lambda: |-
+      - lambda: |
           id(check_if_timers_active).execute();
-          if (!id(global_is_timer_active)) return;
+          if (id(global_is_timer_active)){
+            id(main_display).filled_rectangle(80 , 40 , 160 , 50 , Color::WHITE );
+            id(main_display).rectangle(80 , 40 , 160 , 50 , Color::BLACK );
 
-          // --- Layout based on screen size ---
-          const int W = id(main_display).get_width();
-          const int H = id(main_display).get_height();
-          const int cx = W / 2;
+            id(fetch_first_active_timer).execute();
+            int hours_left = floor(id(global_first_active_timer).seconds_left / 3600);
+            int minutes_left = floor((id(global_first_active_timer).seconds_left - hours_left * 3600) / 60);
+            int seconds_left = id(global_first_active_timer).seconds_left - hours_left * 3600 - minutes_left * 60 ;
+            auto display_hours = (hours_left < 10 ? "0" : "") + std::to_string(hours_left);
+            auto display_minute = (minutes_left < 10 ? "0" : "") + std::to_string(minutes_left);
+            auto display_seconds = (seconds_left  < 10 ? "0" : "") + std::to_string(seconds_left) ;
 
-          // Box size: ~55% of width, ~16% of height, with sane limits
-          int box_w = std::min(W - 40, std::max((int)(W * 0.55f), 140));
-          int box_h = std::min((int)(H * 0.16f), 70);
-          box_h = std::max(box_h, 40);
-
-          // Position: top area (~1/8 from top), centered horizontally
-          int x = (W - box_w) / 2;
-          int y = H / 8;
-
-          // --- Draw widget frame ---
-          id(main_display).filled_rectangle(x, y, box_w, box_h, Color::WHITE);
-          id(main_display).rectangle(x, y, box_w, box_h, Color::BLACK);
-
-          // --- Compute time string for first active timer ---
-          id(fetch_first_active_timer).execute();
-          int hours_left   = floor(id(global_first_active_timer).seconds_left / 3600);
-          int minutes_left = floor((id(global_first_active_timer).seconds_left - hours_left * 3600) / 60);
-          int seconds_left = id(global_first_active_timer).seconds_left - hours_left * 3600 - minutes_left * 60;
-
-          auto hh = (hours_left   < 10 ? "0" : "") + std::to_string(hours_left);
-          auto mm = (minutes_left < 10 ? "0" : "") + std::to_string(minutes_left);
-          auto ss = (seconds_left < 10 ? "0" : "") + std::to_string(seconds_left);
-
-          std::string display_string;
-          if (hours_left > 0) {
-            display_string = hh + ":" + mm;       // e.g., 01:23
-          } else {
-            display_string = mm + ":" + ss;       // e.g., 07:05
+            std::string display_string = "";
+            if (hours_left > 0) {
+              display_string = display_hours + ":" + display_minute;
+            } else {
+              display_string = display_minute + ":" + display_seconds;
+            }
+            id(main_display).printf(120, 47, id(font_timer), Color::BLACK, "%s", display_string.c_str());
           }
-
-          // --- Center text inside the box ---
-          id(main_display).printf(
-            cx, y + (box_h / 2),
-            id(font_timer), Color::BLACK,
-            TextAlign::CENTER, "%s", display_string.c_str()
-          );
-
+  # Starts either mWW or the streaming wake word, depending on the configured location
   - id: start_wake_word
     then:
       - if:
@@ -740,6 +810,7 @@ script:
           then:
             - lambda: id(va).set_use_wake_word(true);
             - voice_assistant.start_continuous:
+  # Stops either mWW or the streaming wake word, depending on the configured location
   - id: stop_wake_word
     then:
       - if:
@@ -753,6 +824,7 @@ script:
             lambda: return id(wake_word_engine_location).state == "On device";
           then:
             - micro_wake_word.stop:
+  # Set the voice assistant phase to idle or muted, depending on if the software mute switch is activated
   - id: set_idle_or_mute_phase
     then:
       - if:
@@ -762,7 +834,6 @@ script:
             - lambda: id(voice_assistant_phase) = ${voice_assist_idle_phase_id};
           else:
             - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
-      - script.execute: reset_screensaver
 
   - id: play_sound
     parameters:
@@ -783,36 +854,6 @@ script:
               ->play_file(sound_file, true, false);
           }
 
-  - id: reset_screensaver
-    then:
-      - lambda: |-
-          id(show_clock) = false;
-          id(idle_seconds) = 0;
-
-  - id: handle_screen_tap
-    then:
-      - script.execute: reset_screensaver
-      - if:
-          condition:
-            switch.is_on: timer_ringing
-          then:
-            - switch.turn_off: timer_ringing
-          else:
-            - if:
-                condition:
-                  lambda: return id(wake_word_engine_location).state == "On device";
-                then:
-                  - if:
-                      condition:
-                        not:
-                          voice_assistant.is_running:
-                      then:
-                        - voice_assistant.start:
-                      else:
-                        - voice_assistant.stop:
-      - display.page.show: idle_page
-      - component.update: main_display
-
 switch:
   - platform: template
     name: Mute
@@ -824,12 +865,10 @@ switch:
     on_turn_off:
       - microphone.unmute:
       - lambda: id(voice_assistant_phase) = ${voice_assist_idle_phase_id};
-      - script.execute: reset_screensaver
       - script.execute: draw_display
     on_turn_on:
       - microphone.mute:
       - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
-      - script.execute: reset_screensaver
       - script.execute: draw_display
   - platform: template
     id: timer_ringing
@@ -837,6 +876,7 @@ switch:
     internal: true
     restore_mode: ALWAYS_OFF
     on_turn_off:
+      # Turn off the repeat mode and disable the pause between playlist items
       - lambda: |-
               id(external_media_player)
                 ->make_call()
@@ -844,9 +884,11 @@ switch:
                 .set_announcement(true)
                 .perform();
               id(external_media_player)->set_playlist_delay_ms(speaker::AudioPipelineType::ANNOUNCEMENT, 0);
+      # Stop playing the alarm
       - media_player.stop:
           announcement: true
     on_turn_on:
+      # Turn on the repeat mode and pause for 1000 ms between playlist items/repeats
       - lambda: |-
             id(external_media_player)
               ->make_call()
@@ -864,7 +906,7 @@ switch:
     name: Speaker Enable
     icon: "mdi:speaker"
     entity_category: config
-    pin: GPIO48
+    pin: GPIO46
     restore_mode: RESTORE_DEFAULT_ON
 
   - platform: template
@@ -890,21 +932,6 @@ switch:
     entity_category: config
     optimistic: true
     restore_mode: RESTORE_DEFAULT_ON
-
-  - platform: template
-    id: clock_enabled
-    name: "Clock Screensaver"
-    icon: "mdi:clock-outline"
-    optimistic: true
-    restore_mode: RESTORE_DEFAULT_ON
-    entity_category: config
-    on_turn_off:
-      # If it was showing, hide it immediately
-      - lambda: |-
-          if (id(show_clock)) id(show_clock) = false;
-          id(idle_seconds) = 0;
-      - display.page.show: idle_page
-      - component.update: main_display
 
 select:
   - platform: template
@@ -975,78 +1002,56 @@ globals:
     type: bool
     restore_value: no
     initial_value: 'false'
-  - id: boot_sound_played
-    type: bool
-    restore_value: no
-    initial_value: "false"
-  - id: idle_seconds
-    type: int
-    restore_value: no
-    initial_value: "0"
-  - id: show_clock
-    type: bool
-    restore_value: no
-    initial_value: "false"
 
 image:
   - file: ${error_illustration_file}
     id: casita_error
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
   - file: ${idle_illustration_file}
     id: casita_idle
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
   - file: ${listening_illustration_file}
     id: casita_listening
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
   - file: ${thinking_illustration_file}
     id: casita_thinking
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
   - file: ${replying_illustration_file}
     id: casita_replying
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
   - file: ${timer_finished_illustration_file}
     id: casita_timer_finished
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
   - file: ${loading_illustration_file}
     id: casita_initializing
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
   - file: ${mute_illustration_file}
     id: casita_muted
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
-  - file: ${playing_illustration_file}
-    id: casita_playing
-    resize: ${imagewidth}x${imageheight}
-    type: RGB565
-    transparency: alpha_channel
-  - file: ${clock_background_file}
-    id: clock_background
-    resize: ${imagewidth}x${imageheight}
-    type: RGB565
-    transparency: alpha_channel
-  - file: https://raw.githubusercontent.com/RealDeco/xiaozhi-esphome/main/images/Other/error-no-wifi.png
+  - file: https://github.com/esphome/wake-word-voice-assistants/raw/main/error_box_illustrations/error-no-wifi.png
     id: error_no_wifi
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
-  - file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/Other/error-no-ha.png
+  - file: https://github.com/esphome/wake-word-voice-assistants/raw/main/error_box_illustrations/error-no-ha.png
     id: error_no_ha
-    resize: ${imagewidth}x${imageheight}
+    resize: 410x502
     type: RGB565
     transparency: alpha_channel
 
@@ -1079,23 +1084,16 @@ font:
   - file:
       type: gfonts
       family: ${font_family}
-      weight: 400
-    id: font_big_clock
-    size: 50
-    glyphsets:
-      - ${font_glyphsets}
-  - file:
-      type: gfonts
-      family: ${font_family}
-      weight: 400
-    id: font_big_date
-    size: 28
+      weight: 300
+    id: font_battery
+    size: 14
     glyphsets:
       - ${font_glyphsets}
 
 text_sensor:
   - id: text_request
     platform: template
+    name: "Text Request"
     on_value:
       lambda: |-
         if(id(text_request).state.length()>30) {
@@ -1106,36 +1104,13 @@ text_sensor:
 
   - id: text_response
     platform: template
+    name: "Text Response"
     on_value:
       lambda: |-
         if(id(text_response).state.length()>30) {
           std::string name = id(text_response).state.c_str();
           std::string truncated = esphome::str_truncate(name.c_str(),31);
           id(text_response).state = (truncated+"...").c_str();
-        }
-
-  - id: text_request_full
-    platform: template
-    name: "Text Request"
-    on_value:
-      lambda: |-
-        // Keep HA state under 255 chars to avoid "unknown"
-        if (id(text_request_full).state.length() > 250) {
-          std::string s = id(text_request_full).state.c_str();
-          std::string truncated = esphome::str_truncate(s.c_str(), 250);
-          id(text_request_full).state = truncated.c_str();
-        }
-
-  - id: text_response_full
-    platform: template
-    name: "Text Response"
-    on_value:
-      lambda: |-
-        // Keep HA state under 255 chars to avoid "unknown"
-        if (id(text_response_full).state.length() > 250) {
-          std::string s = id(text_response_full).state.c_str();
-          std::string truncated = esphome::str_truncate(s.c_str(), 250);
-          id(text_response_full).state = truncated.c_str();
         }
 
 color:
@@ -1155,54 +1130,45 @@ color:
     hex: "26ed3a"
   - id: paused_timer_color
     hex: "3b89e3"
-  - id: seconds_dot_color
-    hex: "3b89e3"
 
 spi:
   id: display_qspi
   type: quad
-  clk_pin: 9
-  data_pins: [11, 12, 13, 14]
-
-i2c:
-  sda: 7
-  scl: 8
-  id: touchscreen_bus
+  clk_pin: 11
+  data_pins: [4, 5, 6, 7]
 
 touchscreen:
-  - platform: cst816
-    id: my_touchscreen
-    interrupt_pin: GPIO41
-    reset_pin: GPIO40
-    display: main_display
-    i2c_id: touchscreen_bus
+  - platform: ft63x6
+    i2c_id: bus_a
     on_touch:
       then:
-        - script.execute: handle_screen_tap
+        - logger.log:
+            format: Touch %d at (%d, %d)
+            args: [touch.id, touch.x, touch.y]
         - binary_sensor.template.publish:
             id: touch_input
             state: ON
     on_release:
       then:
-        - script.execute: reset_screensaver
         - binary_sensor.template.publish:
             id: touch_input
             state: OFF
 
 display:
-  - platform: ${display_platform}
+  - platform: mipi_spi
     id: main_display
-    model: ${display_model}
-    rotation: ${rotate_display}
-    invert_colors: true
-    data_rate: 40MHz
-    cs_pin: 10
-    reset_pin: 47
-#      inverted: true
+    model: CO5300
+    cs_pin: 12
+    reset_pin: 8
     update_interval: never
+
     dimensions:
-        height: ${imageheight}
-        width: ${imagewidth}
+      width: 432
+      height: 504
+
+    data_rate: 80MHz
+    color_order: rgb
+
     pages:
       - id: idle_page
         lambda: |-
@@ -1210,6 +1176,100 @@ display:
           it.image((it.get_width() / 2), (it.get_height() / 2), id(casita_idle), ImageAlign::CENTER);
           id(draw_timer_timeline).execute();
           id(draw_active_timer_widget).execute();
+
+          // ---- Horizontal battery (top-right, double black outline, no backdrop) ----
+          {
+            const int W = it.get_width();
+            const int H = it.get_height();
+
+            // Safe-area insets (avoid rounded corners)
+            const int inset_top    = 28;
+            const int inset_right  = 40;
+            const int inset_left   = 0;
+            const int inset_bottom = 0;
+
+            // Layout
+            int  w   = 52;       // body width (no cap)
+            const int h   = 20;  // body height
+            const int capw = 5;  // cap width
+            int  caph = h - 8;   // cap height
+            const int pad  = 3;  // inner padding (gap between the two outlines)
+
+            // Clamp to safe area width
+            const int safe_w = W - inset_left - inset_right;
+            if (w + capw > safe_w) w = std::max(16, safe_w - capw);
+            if (caph < 6) caph = 6;
+
+            // Anchor to safe top-right
+            const int x = (W - inset_right) - (w + capw);
+            const int y = inset_top;
+
+            // Readings
+            float pct = isnan(id(bat_pct).state) ? 0.0f : id(bat_pct).state;
+            if (pct < 0) pct = 0; else if (pct > 100) pct = 100;
+            const bool chg = id(charging).state;
+
+            // Colors
+            const Color C_OUT = Color(0, 0, 0);       // BLACK outline
+            const Color C_OK  = Color(255, 255, 255); // normal fill (white)
+            const Color C_MID = Color(255, 215, 0);   // 20–50% (yellow)
+            const Color C_LOW = Color(255, 0, 0);     // <20% (red)
+            const Color C_CHG = Color(0, 255, 0);     // charging (green)
+            const Color C_TXT = Color(255, 255, 255); // text white
+            const Color C_SH  = Color(0, 0, 0);       // text shadow black
+
+            // Outer body outline (thicker = 2px by drawing two strokes)
+            it.rectangle(x, y, w, h, C_OUT);
+            it.rectangle(x+1, y+1, w-2, h-2, C_OUT);
+
+            // Cap on the RIGHT, double black outline too
+            const int capx = x + w;
+            const int capy = y + (h - caph) / 2;
+            it.rectangle(capx,   capy,   capw,   caph,   C_OUT);
+            it.rectangle(capx+1, capy+1, capw-2, caph-2, C_OUT);
+
+            // Inner cavity geometry (defines the inner black border position)
+            const int inx = x + pad;
+            const int iny = y + pad;
+            const int inw = w - 2 * pad;
+            const int inh = h - 2 * pad;
+
+            // Choose fill color
+            Color lvl = C_OK;
+            if (chg)           lvl = C_CHG;
+            else if (pct < 20) lvl = C_LOW;
+            else if (pct < 50) lvl = C_MID;
+
+            // Level fill (left → right) inside the inner border area
+            int fw = (int)(inw * (pct / 100.0f));
+            if (fw < 0) fw = 0; if (fw > inw) fw = inw;
+            if (fw > 0) it.filled_rectangle(inx, iny, fw, inh, lvl);
+
+            // Inner black border (second outline) drawn AFTER the fill so it stays visible
+            it.rectangle(inx,   iny,   inw,   inh,   C_OUT);
+
+            // Charging bolt overlay (centered)
+            if (chg) {
+              const int cx = x + w / 2;
+              const int top = iny + 1;
+              const int hh = inh - 2;
+              it.filled_rectangle(cx - 2, top,        3, hh / 2, C_OUT);
+              it.filled_rectangle(cx + 1, top + hh/3, 3, hh / 2, C_OUT);
+            }
+
+            // Percentage text (centered, white with black shadow)
+            char txt[8];
+            snprintf(txt, sizeof(txt), "%d%%", (int)(pct + 0.5f));
+            const int tx = x + w / 2;
+            const int ty = y + h / 2;
+            it.printf(tx+1, ty+1, id(font_battery), C_SH, TextAlign::CENTER, "%s", txt);
+            it.printf(tx,   ty,   id(font_battery), C_TXT, TextAlign::CENTER, "%s", txt);
+
+            // // DEBUG safe area (uncomment to visualize)
+            // it.rectangle(inset_left, inset_top, safe_w, H - inset_top - inset_bottom, Color(255,0,255));
+          }
+
+
       - id: listening_page
         lambda: |-
           it.fill(id(listening_color));
@@ -1269,82 +1329,17 @@ display:
       - id: now_playing_page
         lambda: |-
           it.fill(Color::BLACK);
-          it.image((it.get_width() / 2), (it.get_height() / 2), id(casita_playing), ImageAlign::CENTER);
-          // Optional: show timer progress while playing
-          id(draw_timer_timeline).execute();
-      - id: clock_page
-        lambda: |-
-          it.fill(Color::BLACK);
-          it.image((it.get_width() / 2), (it.get_height() / 2), id(clock_background), ImageAlign::CENTER);
+          it.printf((it.get_width()/2)-50, 180, id(font_response), Color::WHITE, "Mediaplayer is Playing...");
+          // Optionally add icon/image here
 
-          const int W = it.get_width();
-          const int H = it.get_height();
-          const int cx = W / 2;
-          const int cy = H / 2;
-          const int margin = 8;                      // keep dots inside the round bezel
-          const int r_outer = (std::min(W, H) / 2) - margin;
-
-          // Scale dot sizes a bit with screen size
-          const int dot_r_sec_small = std::max(2, std::min(3, W / 180));  // 2..3
-          const int dot_r_sec_big   = dot_r_sec_small + 1;                // 3..4
-          const int dot_r_min       = dot_r_sec_big + 2;                  // larger minute dot
-          const int dot_r_hr        = dot_r_min + 2;                      // largest hour dot
-
-          // Rings radii
-          const int r_sec = r_outer;        // outer ring for seconds
-          const int r_min = r_outer - 14;   // inner ring for minute dot
-          const int r_hr  = r_outer - 28;   // inner ring for hour dot
-
-          auto now = id(sntp_time).now();
-          const int sec    = now.second;                 // 0..59
-          const int minute = now.minute;                 // 0..59
-          const int hour12 = now.hour % 12;              // 0..11
-
-          // 10 distinct minute colors (edit to taste)
-          const Color minute_palette[10] = {
-            Color(0x3b,0x89,0xe3), // 0 blue
-            Color(0x26,0xed,0x3a), // 1 green
-            Color(0xff,0xc1,0x07), // 2 amber
-            Color(0xff,0x5a,0x36), // 3 orange
-            Color(0xff,0x3b,0x8d), // 4 magenta
-            Color(0x9c,0x27,0xb0), // 5 purple
-            Color(0x00,0xbc,0xd4), // 6 cyan
-            Color(0x8b,0xc3,0x4a), // 7 lime
-            Color(0xfe,0x6d,0x73), // 8 coral
-            Color(0x60,0x7d,0x8b)  // 9 blue-grey
-          };
-          Color sec_active_col = minute_palette[minute % 10];
-
-          const float PI = 3.1415926f;
-
-          // ---- Seconds ring: draw ONLY past seconds (0..sec), every 5th in white ----
-          for (int i = 0; i <= sec; i++) {
-            float angle = (i / 60.0f) * 2.0f * PI - PI/2.0f;  // start at 12 o'clock
-            int x = cx + (int)(r_sec * cosf(angle));
-            int y = cy + (int)(r_sec * sinf(angle));
-            int rr = (i % 5 == 0) ? dot_r_sec_big : dot_r_sec_small;
-
-            Color col = (i % 5 == 0) ? Color::WHITE : sec_active_col;
-            it.filled_circle(x, y, rr, col);
-          }
-
-          // ---- Minute dot (single larger dot on inner ring) ----
-          {
-            float m_angle = (minute / 60.0f) * 2.0f * PI - PI/2.0f;
-            int mx = cx + (int)(r_min * cosf(m_angle));
-            int my = cy + (int)(r_min * sinf(m_angle));
-            it.filled_circle(mx, my, dot_r_min, Color::WHITE);
-          }
-
-          // ---- Hour dot (single even larger dot, hour + minute offset) ----
-          {
-            float h_pos = (hour12 + (minute / 60.0f)) / 12.0f;   // smooth hour movement
-            float h_angle = h_pos * 2.0f * PI - PI/2.0f;
-            int hx = cx + (int)(r_hr * cosf(h_angle));
-            int hy = cy + (int)(r_hr * sinf(h_angle));
-            it.filled_circle(hx, hy, dot_r_hr, Color::WHITE);
-          }
-
-          // ---- Center time & date ----
-          it.strftime(cx, cy - 30, id(font_big_clock), Color::WHITE, TextAlign::CENTER, "%H:%M:%S", now);
-          it.strftime(cx, cy + 30, id(font_big_date),  Color::WHITE, TextAlign::CENTER, "%a, %d %b", now);
+number:
+  - platform: template
+    name: "Screen Brightness"
+    id: screen_brightness
+    min_value: 0
+    max_value: 255
+    step: 1
+    initial_value: 200
+    set_action:
+      - lambda: |-
+          id(main_display).set_brightness((uint8_t)x);
