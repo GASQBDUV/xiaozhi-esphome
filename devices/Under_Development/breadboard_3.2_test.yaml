@@ -1,62 +1,30 @@
-substitutions:
-  name: esphome-web-619cd4
-  friendly_name: "Xiaozhi Ball v1"
 
-## VERSION 1.04 dev. ##
-## ADDED: online clock wallpaper with select in HA. API service to send image from HA:
-##
-## service: esphome.esphome_web_0bac48_show_fullscreen_image
-## data:
-##   url: "http://homeassistant.local:8123/local/funny.png"
-##
-## VERSION 1.03 dev. ##
-## minor memory fixes, clock select from HA, remove 1 font (req/res font same), remove alpha_channel
-## VERSION 1.02 dev. ##
-## cleandup and fixes.
-## VERSION 1.01 dev. ##
-## ADDED; clock when idle more than 30 seconds.
-## ADDED; virtual touch, so same functionality as touch is available from home assistant (start, stop, stop timer alarm)
-## ADDED: use og playing.png emo when playing music on mediaplayer, still changes to clock after 30 seconds.
-## ADDED: timer ringing entity so the alert can trigger other things through automations.
-## ADDED: longer request and response entities so they can be shown on dashboards, limited to 255 letters though.
-## FIX: timer pages to be dynamic for different screen sizes
-##
-## VERSION 1.00 ##
-## First working code
+substitutions:
+  name: esphome-web-d11acc
+  friendly_name: Xiaozhi DIY 2.4
+
+## Modular version Main v1.01 combined
 
 ## SETTINGS ######################################################################################################################################
+  imagewidth:  "240"
+  imageheight: "320"
 
-  startup_sound: "Home_Connected" # (options are: available, Home_ Connected, Home_ Connected_Male, Computer_Ready)
-  clock_background_image: "starrysky" # (options are: clock, hacker, ha-girl, starrysky)
-  imagemodel: "Eyes2" # options are:
+  startup_sound: "Home_Connected" # (options are: available, Home_Connected, Home_Connected_Male, Computer_Ready)
+  clock_background_image: "clock" # (options are: clock, hacker, ha-girl, mission, starrysky)
+  imagemodel: "Gwen" # options are:
 
 # Alita, Alfred, Astrobot, Buzz, Casita, Cybergirl, Dory, EVE, Eyes, Eyes2, GLaDOS, Girl1, Guy1, Guy2, Gwen, HA-character, ha-girl, Hacker, Harley,
 # Jarvis, Luffy, Mario, Max, Prime, Robochibi, Robocop, Robot, Robotgirl, Shaun
 ##################################################################################################################################################
 
-  imagewidth: "240" # ILI9341 (breadboard 2.4") "240" or GC9A01A (Ball v1) "240" or ST7789V (Xingzhi Cube) "240"
-  imageheight: "240" # ILI9341 (breadboard 2.4") "320" or GC9A01A (Ball v1) "240" or ST7789V (Xingzhi Cube) "240"
-  displaymodel: "GC9A01A" # ILI9341 (breadboard 2.4"), GC9A01A (Ball v1) or ST7789V (Xingzhi Cube)
-  invertcolors: "true" # ILI9341 (breadboard 2.4") "false" or GC9A01A (Ball v1) "true" or ST7789V (Xingzhi Cube) "true"
+  font_glyphsets: "GF_Latin_Core"
+  font_family: Figtree
 
-###### Uncomment for breadboard 2.4" & Ball v1
-  backlight_output_pin: "3" # Display Backlight
-  lcd_cs_pin: "13"          # Display CS (Chip Select)
-  lcd_dc_pin: "10"          # Display DC (Data/Command)
-  lcd_reset_pin: "18"       # Display Reset
-  spi_clk_pin: "14"         # SPI Clock
-  spi_mosi_pin: "17"        # SPI MOSI (Data Out)
-
-###### Uncomment for Xingzhi Cube 1,54
-#  backlight_output_pin: "13" # Display Backlight
-#  lcd_cs_pin: "14"           # Display CS (Chip Select)
-#  lcd_dc_pin: "8"            # Display DC (Data/Command)
-#  lcd_reset_pin: "18"        # Display Reset
-#  spi_clk_pin: "9"           # SPI Clock
-#  spi_mosi_pin: "10"         # SPI MOSI (Data Out)
-
-##################################################################################################################################################
-
+  # Substitutions Provided by main.yaml or HW pack:
+  # name, friendly_name, startup_sound, imagemodel,
+  # imagewidth, imageheight, clock_background_image, font_* etc.
+  allowed_characters: >-
+    !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrstuvwxyz{|}°²³µ¿ÁÂÄÅÉÖÚßàáâãäåæçèéêëìíîðñòóôõöøùúûüýþāăąćčďĐđēėęěğĮįıļľŁłńňőřśšťũūůűųźŻżŽžơưșțΆΈΌΐΑΒΓΔΕΖΗΘΚΜΝΠΡΣΤΥΦάέήίαβγδεζηθικλμνξοπρςστυφχψωϊόύώАБВГДЕЖЗИКЛМНОПРСТУХЦЧШЪЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяёђєіїјљњћאבגדהוזחטיכלםמןנסעפץצקרשת،ءآأإئابةتجحخدذرزسشصضطظعغفقكلمنهوىيٹپچڈکگںھہیےংকচতধনফবযরলশষস়ািু্చయలిెొ్ംഅആഇഈഉഎഓകഗങചജഞടഡണതദധനപഫബഭമയരറലളവശസഹാിീുൂെേൈ്ൺൻർൽൾაბგდევზთილმნოპრსტუფქყშჩცძჭხạảấầẩậắặẹẽếềểệỉịọỏốồổỗộớờởợụủứừửữựỳ—、一上不个中为主乾了些亮人任低佔何作供依侧係個側偵充光入全关冇冷几切到制前動區卧厅厨及口另右吊后吗启吸呀咗哪唔問啟嗎嘅嘛器圍在场執場外多大始安定客室家密寵对將小少左已帘常幫幾库度庫廊廚廳开式後恆感態成我戲戶户房所扇手打执把拔换掉控插摄整斯新明是景暗更最會有未本模機檯櫃欄次正氏水沒没洗活派温測源溫漏潮激濕灯為無煙照熱燈燥物狀玄现現瓦用發的盞目着睡私空窗立笛管節簾籬紅線红罐置聚聲脚腦腳臥色节著行衣解設調請謝警设调走路車车运連遊運過道邊部都量鎖锁門閂閉開關门闭除隱離電震霧面音頂題顏颜風风食餅餵가간감갔강개거게겨결경고공과관그금급기길깥꺼껐꼽나난내네놀누는능니다닫담대더데도동됐되된됨둡드든등디때떤뜨라래러렇렌려로료른를리림링마많명몇모무문물뭐바밝방배변보부불블빨뽑사산상색서설성세센션소쇼수스습시신실싱아안않알았애야어얼업없었에여연열옆오온완외왼요운움워원위으은을음의이인일임입있작잠장재전절정제져조족종주줄중줘지직진짐쪽차창천최추출충치침커컴켜켰쿠크키탁탄태탬터텔통트튼티파팬퍼폰표퓨플핑한함해했행혀현화활후휴힘，？
   loading_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/loading.png
   idle_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/idle.png
   listening_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/listening.png
@@ -67,7 +35,6 @@ substitutions:
   mute_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/mute.png
   playing_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/playing.png
   clock_background_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/Other/${imagewidth}x${imageheight}/${clock_background_image}.png
-
   startup_sound_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/${startup_sound}.flac
 
   loading_illustration_background_color: "000000"
@@ -86,10 +53,22 @@ substitutions:
   voice_assist_muted_phase_id: "12"
   voice_assist_timer_finished_phase_id: "20"
 
-  allowed_characters: " !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrstuvwxyz{|}°²³µ¿ÁÂÄÅÉÖÚßàáâãäåæçèéêëìíîðñòóôõöøùúûüýþāăąćčďĐđēėęěğĮįıļľŁłńňőřśšťũūůűųźŻżŽžơưșțΆΈΌΐΑΒΓΔΕΖΗΘΚΜΝΠΡΣΤΥΦάέήίαβγδεζηθικλμνξοπρςστυφχψωϊόύώАБВГДЕЖЗИКЛМНОПРСТУХЦЧШЪЭЮЯабвгдежзийклмнопрстуфхцчшщъыьэюяёђєіїјљњћאבגדהוזחטיכלםמןנסעפץצקרשת،ءآأإئابةتجحخدذرزسشصضطظعغفقكلمنهوىيٹپچڈکگںھہیےংকচতধনফবযরলশষস়ািু্చయలిెొ్ംഅആഇഈഉഎഓകഗങചജഞടഡണതദധനപഫബഭമയരറലളവശസഹാിീുൂെേൈ്ൺൻർൽൾაბგდევზთილმნოპრსტუფქყშჩცძჭხạảấầẩậắặẹẽếềểệỉịọỏốồổỗộớờởợụủứừửữựỳ—、一上不个中为主乾了些亮人任低佔何作供依侧係個側偵充光入全关冇冷几切到制前動區卧厅厨及口另右吊后吗启吸呀咗哪唔問啟嗎嘅嘛器圍在场執場外多大始安定客室家密寵对將小少左已帘常幫幾库度庫廊廚廳开式後恆感態成我戲戶户房所扇手打执把拔换掉控插摄整斯新明是景暗更最會有未本模機檯櫃欄次正氏水沒没洗活派温測源溫漏潮激濕灯為無煙照熱燈燥物狀玄现現瓦用發的盞目着睡私空窗立笛管節簾籬紅線红罐置聚聲脚腦腳臥色节著行衣解設調請謝警设调走路車车运連遊運過道邊部都量鎖锁門閂閉開關门闭除隱離電震霧面音頂題顏颜風风食餅餵가간감갔강개거게겨결경고공과관그금급기길깥꺼껐꼽나난내네놀누는능니다닫담대더데도동됐되된됨둡드든등디때떤뜨라래러렇렌려로료른를리림링마많명몇모무문물뭐바밝방배변보부불블빨뽑사산상색서설성세센션소쇼수스습시신실싱아안않알았애야어얼업없었에여연열옆오온완외왼요운움워원위으은을음의이인일임입있작잠장재전절정제져조족종주줄중줘지직진짐쪽차창천최추출충치침커컴켜켰쿠크키탁탄태탬터텔통트튼티파팬퍼폰표퓨플핑한함해했행혀현화활후휴힘，？"
+esp32:
+  board: esp32-s3-devkitc-1
+  flash_size: 16MB
+  cpu_frequency: 240MHz
+  framework:
+    type: esp-idf
+    sdkconfig_options:
+      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: "y"
+      CONFIG_ESP32S3_DATA_CACHE_64KB: "y"
+      CONFIG_ESP32S3_DATA_CACHE_LINE_64B: "y"
 
-  font_glyphsets: "GF_Latin_Core"
-  font_family: Figtree
+psram:
+  mode: octal
+  speed: 80MHz
+
+# Core v1.01
 
 esphome:
   name: ${name}
@@ -107,60 +86,6 @@ esphome:
           then:
             - lambda: id(init_in_progress) = false;
             - script.execute: draw_display
-
-esp32:
-  board: esp32-s3-devkitc-1
-  flash_size: 16MB
-  cpu_frequency: 240MHz
-  framework:
-    type: esp-idf
-    sdkconfig_options:
-      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: "y"
-      CONFIG_ESP32S3_DATA_CACHE_64KB: "y"
-      CONFIG_ESP32S3_DATA_CACHE_LINE_64B: "y"
-
-psram:
-  mode: octal
-  speed: 80MHz
-
-api:
-  on_client_connected:
-    - script.execute: draw_display
-    - lambda: |-
-        if (!id(boot_sound_played)) {
-          id(boot_sound_played) = true;
-          if (id(startup_sound_switch).state) {
-            id(play_sound)->execute(true, id(ready_sound));
-          }
-        }
-    - script.execute: reset_screensaver
-  on_client_disconnected:
-    - script.execute: draw_display
-
-  actions:
-    - action: show_fullscreen_image
-      variables:
-        url: string
-      then:
-        - online_image.set_url:
-            id: temp_fullscreen
-            url: !lambda 'return url;'
-            update: true
-        - delay: 1200ms
-        - display.page.show: empty_clock
-        - component.update: main_display
-        - script.execute: reset_screensaver
-        - if:
-            condition:
-              switch.is_off: clock_enabled
-            then:
-              - delay: !lambda |-
-                  int s = (int) id(clock_delay_seconds).state;
-                  if (s <= 0) s = 10;
-                  return (uint32_t)(s * 1000);
-              - display.page.show: idle_page
-              - component.update: main_display
-              - online_image.release: temp_fullscreen
 
 ota:
   - platform: esphome
@@ -202,6 +127,53 @@ time:
   - platform: homeassistant
     id: homeassistant_time
 
+api:
+  on_client_connected:
+    - script.execute: draw_display
+    - lambda: |-
+        if (!id(boot_sound_played)) {
+          id(boot_sound_played) = true;
+          if (id(startup_sound_switch).state) {
+            id(play_sound)->execute(true, id(ready_sound));
+          }
+        }
+    - script.execute: reset_screensaver
+  on_client_disconnected:
+    - script.execute: draw_display
+
+  actions:
+    - action: show_fullscreen_image
+      variables:
+        url: string
+      then:
+        - if:
+            condition:
+              lambda: |-
+                return id(voice_assistant_phase) == ${voice_assist_idle_phase_id}
+                    || id(voice_assistant_phase) == ${voice_assist_replying_phase_id};
+            then:
+              - lambda: id(showing_fullscreen_image) = true;
+              - online_image.set_url:
+                  id: temp_fullscreen
+                  url: !lambda 'return url;'
+                  update: true
+              - delay: 1200ms
+              - display.page.show: empty_clock
+              - component.update: main_display
+              - script.execute: reset_screensaver
+              - delay: !lambda |-
+                  int s = (int) id(api_image_duration_seconds).state;
+                  if (s <= 0) s = 30;
+                  return (uint32_t)(s * 1000);
+              - online_image.release: temp_fullscreen
+              - lambda: id(showing_fullscreen_image) = false;
+              - script.execute: draw_display
+            else:
+              - logger.log:
+                  level: INFO
+                  format: "show_fullscreen_image ignored (phase=%d)"
+                  args: [ 'id(voice_assistant_phase)' ]
+
 button:
   - platform: factory_reset
     id: factory_reset_btn
@@ -228,6 +200,20 @@ number:
     step: 5
     initial_value: 10
 
+  - platform: template
+    id: api_image_duration_seconds
+    name: "API Image Display Time"
+    unit_of_measurement: "s"
+    icon: "mdi:timer-sand"
+    entity_category: config
+    optimistic: true
+    restore_value: true
+    mode: box
+    min_value: 1
+    max_value: 600
+    step: 1
+    initial_value: 30
+
 sensor:
   - platform: adc
     pin: GPIO1
@@ -250,7 +236,7 @@ sensor:
         - sensor.template.publish:
             id: battery_percentage
             state: !lambda 'return x;'
-      
+
   - platform: template
     id: battery_percentage
     name: "Battery Percentage"
@@ -290,14 +276,9 @@ sensor:
               - component.update: main_display
 
 binary_sensor:
-  - platform: gpio
-    pin:
-      number: 0
-      mode: INPUT_PULLUP
-      ignore_strapping_warning: true
-      inverted: true
-    id: left_top_button
-    internal: true
+  - platform: template
+    name: "Touch Button"
+    id: touch_input
     on_multi_click:
       - timing:
           - ON for 40ms to 400ms
@@ -322,17 +303,50 @@ binary_sensor:
                           then:
                             - voice_assistant.start:
                           else:
-                            - voice_assistant.stop:  
-
+                            - voice_assistant.stop:
       - timing:
           - ON for at least 1s
         then:
           - switch.toggle: show_battery_status
           - script.execute: draw_display
+
+  - platform: gpio
+    pin:
+      number: 0
+      mode: INPUT_PULLUP
+      ignore_strapping_warning: true
+      inverted: true
+    id: left_button
+    on_multi_click:
       - timing:
-          - ON for at least 10s
+          - ON for 40ms to 400ms
+          - OFF for at least 330ms
         then:
-          - button.press: factory_reset_btn
+          - if:
+              condition:
+                switch.is_on: timer_ringing
+              then:
+                - switch.turn_off: timer_ringing
+              else:
+                - if:
+                    condition:
+                      lambda: return id(wake_word_engine_location).state == "On device";
+                    then:
+                      - media_player.stop:
+                          id: external_media_player
+                      - if:
+                          condition:
+                            not:
+                              voice_assistant.is_running:
+                          then:
+                            - voice_assistant.start:
+                          else:
+                            - voice_assistant.stop:
+      - timing:
+          - ON for at least 1s
+        then:
+          - switch.toggle: show_battery_status
+          - script.execute: draw_display
 
   - platform: template
     name: "Timer Ringing Active"
@@ -342,17 +356,12 @@ binary_sensor:
       return id(timer_ringing).state;
 
 output:
-  - platform: ledc
-    id: backlight_output
-    pin:
-      number: ${backlight_output_pin}
-
+  # colors for the clock (logical; not the screen backlight)
   - platform: template
     id: clock_color_r
     type: float
     write_action:
       - lambda: |-
-          // Nothing to do — value is just stored
           return;
 
   - platform: template
@@ -369,39 +378,12 @@ output:
       - lambda: |-
           return;
 
-light:
-  - platform: monochromatic
-    id: Sled
-    name: Screen
-    icon: "mdi:television"
-    entity_category: config
-    output: backlight_output
-    restore_mode: RESTORE_DEFAULT_ON
-    default_transition_length: 250ms
-  - platform: esp32_rmt_led_strip
-    id: led
-    name: none
-    disabled_by_default: false
-    entity_category: config
-    pin: GPIO48
-    default_transition_length: 0s
-    chipset: WS2812
-    num_leds: 1
-    rgb_order: grb
-    effects:
-      - pulse:
-          name: "Slow Pulse"
-          transition_length: 250ms
-          update_interval: 250ms
-          min_brightness: 50%
-          max_brightness: 100%
-      - pulse:
-          name: "Fast Pulse"
-          transition_length: 100ms
-          update_interval: 100ms
-          min_brightness: 50%
-          max_brightness: 100%
+  - platform: ledc
+    id: backlight_output
+    pin: GPIO3
+    inverted: false
 
+light:
   - platform: rgb
     id: clock_color_picker
     name: "Clock Color"
@@ -410,33 +392,14 @@ light:
     green: clock_color_g
     blue: clock_color_b
 
-i2s_audio:
-  - id: i2s_mic # For microphone
-    i2s_lrclk_pin: GPIO4 #WS 
-    i2s_bclk_pin: GPIO5  #SCK
-  - id: i2s_audio_bus # For speaker
-    i2s_lrclk_pin: GPIO16
-    i2s_bclk_pin: GPIO15
-
-microphone:
-  - platform: i2s_audio
-    id: box_mic
-    i2s_audio_id: i2s_mic
-    i2s_din_pin: GPIO6
-    adc_type: external
-    channel: left
-    pdm: false
-    sample_rate: 16000
-    bits_per_sample: 16bit
-
-speaker:
-  - platform: i2s_audio
-    id: box_speaker
-    i2s_audio_id: i2s_audio_bus
-    i2s_dout_pin: GPIO7
-    dac_type: external
-    sample_rate: 16000
-    channel: left
+  - platform: monochromatic
+    id: Sled
+    name: Screen
+    icon: "mdi:television"
+    entity_category: config
+    output: backlight_output
+    restore_mode: ALWAYS_ON
+    default_transition_length: 250ms
 
 media_player:
   - platform: speaker
@@ -444,9 +407,10 @@ media_player:
     id: external_media_player
     announcement_pipeline:
       speaker: box_speaker
-      format: FLAC
+      format: WAV
       sample_rate: 16000
       num_channels: 1
+    buffer_size: 250000
     files:
       - id: timer_finished_sound
         file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/timer_finished.flac
@@ -454,7 +418,6 @@ media_player:
         file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/wake_word_triggered.flac
       - id: ready_sound
         file: ${startup_sound_file}
-
     on_announcement:
       - if:
           condition:
@@ -466,9 +429,9 @@ media_player:
                   - lambda: return id(wake_word_engine_location).state == "In Home Assistant";
                 then:
                   - wait_until:
-                      - not:
-                          voice_assistant.is_running:
-
+                      condition:
+                        - not:
+                            voice_assistant.is_running:
       - if:
           condition:
             lambda: 'return id(playing_internal_sound);'
@@ -478,7 +441,6 @@ media_player:
             - script.execute: reset_screensaver
             - display.page.show: now_playing_page
             - component.update: main_display
-
     on_idle:
       - if:
           condition:
@@ -517,6 +479,7 @@ voice_assistant:
   noise_suppression_level: 2
   auto_gain: 31dBFS
   volume_multiplier: 2.0
+
   on_listening:
     - script.execute: reset_screensaver
     - lambda: id(voice_assistant_phase) = ${voice_assist_listening_phase_id};
@@ -533,9 +496,11 @@ voice_assistant:
         id: text_response
         state: "..."
     - script.execute: draw_display
+
   on_stt_vad_end:
     - lambda: id(voice_assistant_phase) = ${voice_assist_thinking_phase_id};
     - script.execute: draw_display
+
   on_stt_end:
     - text_sensor.template.publish:
         id: text_request
@@ -544,6 +509,7 @@ voice_assistant:
         id: text_request_full
         state: !lambda return x;
     - script.execute: draw_display
+
   on_tts_start:
     - script.execute: reset_screensaver
     - text_sensor.template.publish:
@@ -555,17 +521,19 @@ voice_assistant:
     - lambda: id(voice_assistant_phase) = ${voice_assist_replying_phase_id};
     - lambda: 'id(playing_internal_sound) = true;'
     - script.execute: draw_display
+
   on_end:
     - wait_until:
         condition:
           - media_player.is_announcing:
         timeout: 0.5s
     - wait_until:
-        - and:
-            - not:
-                media_player.is_announcing:
-            - not:
-                speaker.is_playing:
+        condition:
+          - and:
+              - not:
+                  media_player.is_announcing:
+              - not:
+                  speaker.is_playing:
     - if:
         condition:
           - lambda: return id(wake_word_engine_location).state == "On device";
@@ -597,56 +565,63 @@ voice_assistant:
               else:
                 - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
           - script.execute: draw_display
+
   on_client_connected:
     - lambda: id(init_in_progress) = false;
     - script.execute: start_wake_word
     - script.execute: set_idle_or_mute_phase
     - script.execute: draw_display
+
   on_client_disconnected:
     - script.execute: stop_wake_word
     - lambda: id(voice_assistant_phase) = ${voice_assist_not_ready_phase_id};
     - script.execute: draw_display
+
   on_timer_started:
     - script.execute: reset_screensaver
     - script.execute: draw_display
+
   on_timer_cancelled:
     - script.execute: draw_display
+
   on_timer_updated:
     - script.execute: draw_display
+
   on_timer_tick:
     - script.execute: draw_display
+
   on_timer_finished:
     - switch.turn_on: timer_ringing
     - wait_until:
-        media_player.is_announcing:
+        condition:
+          - media_player.is_announcing:
     - lambda: id(voice_assistant_phase) = ${voice_assist_timer_finished_phase_id};
     - script.execute: draw_display
 
 interval:
   - interval: 1s
     then:
-      - if:
-          condition:
-            and:
-              - lambda: return id(voice_assistant_phase) == ${voice_assist_idle_phase_id};
-              - switch.is_off: mute
-              - lambda: return id(clock_enabled).state;
-          then:
-            - lambda: |-
-                id(idle_seconds)++;
-                int delay_s = (int) id(clock_delay_seconds).state;
-                delay_s = delay_s <= 0 ? 30 : delay_s;
-                if (id(idle_seconds) >= delay_s && !id(show_clock)) {
-                  id(show_clock) = true;
-                  id(show_clock_page).execute();
-                }
-          else:
-            - lambda: |-
-                if (id(show_clock)) {
-                  id(show_clock) = false;
-                }
-                id(idle_seconds) = 0;
+      - lambda: |-
+          const bool idle_phase   = (id(voice_assistant_phase) == ${voice_assist_idle_phase_id});
+          const bool not_muted    = !id(mute).state;
+          const bool clock_ok     = id(clock_enabled).state;
+          const bool not_fullscreen   = !id(showing_fullscreen_image);
 
+          id(check_if_timers_active).execute();
+          const bool has_active_timer = id(global_is_timer_active);
+
+          if (idle_phase && not_muted && clock_ok && not_fullscreen && !has_active_timer) {
+            id(idle_seconds)++;
+            int delay_s = (int) id(clock_delay_seconds).state;
+            if (delay_s <= 0) delay_s = 30;
+            if (id(idle_seconds) >= delay_s && !id(show_clock)) {
+              id(show_clock) = true;
+              id(show_clock_page).execute();
+            }
+          } else {
+            if (id(show_clock)) id(show_clock) = false;
+            id(idle_seconds) = 0;
+          }
       - if:
           condition:
             lambda: return id(show_clock);
@@ -668,8 +643,13 @@ script:
                       condition:
                         api.connected:
                       then:
-                        - lambda: |
-                            // Screensaver clock while idle (only if enabled)
+                        - lambda: |-
+                            if (id(showing_fullscreen_image)
+                                && id(voice_assistant_phase) == ${voice_assist_idle_phase_id}) {
+                              id(main_display).show_page(empty_clock);
+                              id(main_display).update();
+                              return;
+                            }
                             if (id(voice_assistant_phase) == ${voice_assist_idle_phase_id}
                                 && id(show_clock)
                                 && id(clock_enabled).state) {
@@ -679,36 +659,30 @@ script:
                             switch(id(voice_assistant_phase)) {
                               case ${voice_assist_listening_phase_id}:
                                 id(main_display).show_page(listening_page);
-                                id(main_display).update();
                                 break;
                               case ${voice_assist_thinking_phase_id}:
                                 id(main_display).show_page(thinking_page);
-                                id(main_display).update();
                                 break;
                               case ${voice_assist_replying_phase_id}:
                                 id(main_display).show_page(replying_page);
-                                id(main_display).update();
                                 break;
                               case ${voice_assist_error_phase_id}:
                                 id(main_display).show_page(error_page);
-                                id(main_display).update();
                                 break;
                               case ${voice_assist_muted_phase_id}:
                                 id(main_display).show_page(muted_page);
-                                id(main_display).update();
                                 break;
                               case ${voice_assist_not_ready_phase_id}:
                                 id(main_display).show_page(no_ha_page);
-                                id(main_display).update();
                                 break;
                               case ${voice_assist_timer_finished_phase_id}:
                                 id(main_display).show_page(timer_finished_page);
-                                id(main_display).update();
                                 break;
                               default:
                                 id(main_display).show_page(idle_page);
-                                id(main_display).update();
+                                break;
                             }
+                            id(main_display).update();
                       else:
                         - display.page.show: no_ha_page
                         - component.update: main_display
@@ -718,7 +692,6 @@ script:
           else:
             - display.page.show: initializing_page
             - component.update: main_display
-
 
   - id: fetch_first_active_timer
     then:
@@ -731,6 +704,7 @@ script:
             }
           }
           id(global_first_active_timer) = output_timer;
+
   - id: check_if_timers_active
     then:
       - lambda: |
@@ -738,12 +712,11 @@ script:
           bool output = false;
           if (timers.size() > 0) {
             for (auto &iterable_timer : timers) {
-              if(iterable_timer.second.is_active) {
-                output = true;
-              }
+              if (iterable_timer.second.is_active) output = true;
             }
           }
           id(global_is_timer_active) = output;
+
   - id: fetch_first_timer
     then:
       - lambda: |
@@ -755,28 +728,23 @@ script:
             }
           }
           id(global_first_timer) = output_timer;
+
   - id: check_if_timers
     then:
       - lambda: |
           const auto timers = id(va).get_timers();
-          bool output = false;
-          if (timers.size() > 0) {
-            output = true;
-          }
-          id(global_is_timer) = output;
+          id(global_is_timer) = (timers.size() > 0);
 
   - id: draw_timer_timeline
     then:
       - lambda: |-
-          // Dynamically center a bottom progress bar
           const int W = id(main_display).get_width();
           const int H = id(main_display).get_height();
-
-          const int padding = 20;         // left/right margin
-          const int bar_h   = 15;         // total bar height
+          const int padding = 20;
+          const int bar_h   = 15;
           const int bar_w   = W - (padding * 2);
           const int x       = (W - bar_w) / 2;
-          const int y       = H - (bar_h + 15);   // 15px above the bottom edge
+          const int y       = H - (bar_h + 15);
           const int fill_h  = bar_h - 2;
 
           id(check_if_timers_active).execute();
@@ -788,9 +756,7 @@ script:
               bar_w * id(global_first_active_timer).seconds_left
               / max(id(global_first_active_timer).total_seconds, static_cast<uint32_t>(1))
             );
-            // background
             id(main_display).filled_rectangle(x, y, bar_w, bar_h, Color::WHITE);
-            // fill
             if (filled > 0) {
               id(main_display).filled_rectangle(x, y + 1, filled, fill_h, id(active_timer_color));
             }
@@ -812,47 +778,94 @@ script:
           id(check_if_timers_active).execute();
           if (!id(global_is_timer_active)) return;
 
-          // --- Layout based on screen size ---
+          // --- geometry (slightly smaller than before) ---
           const int W = id(main_display).get_width();
           const int H = id(main_display).get_height();
           const int cx = W / 2;
+          const int cy = H / 2;
 
-          // Box size: ~55% of width, ~16% of height, with sane limits
-          int box_w = std::min(W - 40, std::max((int)(W * 0.55f), 140));
-          int box_h = std::min((int)(H * 0.16f), 70);
-          box_h = std::max(box_h, 40);
+          const int S = std::min(W, H);
+          const int R_SEC = (int)(S * 0.30f);        // was ~0.33
+          const int L_SEC = std::max(5, S / 28);     // a hair shorter
+          const int TH_SEC = 2;
 
-          // Position: top area (~1/8 from top), centered horizontally
-          int x = (W - box_w) / 2;
-          int y = H / 8;
+          const int GAP   = std::max(6, S / 60);
+          const int R_MIN = R_SEC - L_SEC - GAP;     // inner ring end radius
+          const int L_MIN = std::max(4, L_SEC - 3);  // shorter than seconds
+          const int TH_MIN = 2;
 
-          // --- Draw widget frame ---
-          id(main_display).filled_rectangle(x, y, box_w, box_h, Color::WHITE);
-          id(main_display).rectangle(x, y, box_w, box_h, Color::BLACK);
+          // --- colors ---
+          const Color GREY(60, 60, 60);
+          const Color SEC_COL = id(paused_timer_color); // blue
+          const Color MIN_COL(255, 64, 64);             // red
 
-          // --- Compute time string for first active timer ---
+          // --- time breakdown ---
           id(fetch_first_active_timer).execute();
-          int hours_left   = floor(id(global_first_active_timer).seconds_left / 3600);
-          int minutes_left = floor((id(global_first_active_timer).seconds_left - hours_left * 3600) / 60);
-          int seconds_left = id(global_first_active_timer).seconds_left - hours_left * 3600 - minutes_left * 60;
+          uint32_t left  = id(global_first_active_timer).seconds_left;
+          int hours_left   = left / 3600;
+          int minutes_left = (left / 60) % 60;
+          int seconds_left = left % 60;
 
-          auto hh = (hours_left   < 10 ? "0" : "") + std::to_string(hours_left);
-          auto mm = (minutes_left < 10 ? "0" : "") + std::to_string(minutes_left);
-          auto ss = (seconds_left < 10 ? "0" : "") + std::to_string(seconds_left);
+          int sec_active = seconds_left;
+          if ((minutes_left + hours_left) > 0 && seconds_left == 0) sec_active = 60;
 
-          std::string display_string;
-          if (hours_left > 0) {
-            display_string = hh + ":" + mm;       // e.g., 01:23
-          } else {
-            display_string = mm + ":" + ss;       // e.g., 07:05
+          int min_active = minutes_left;
+          if (hours_left > 0 && minutes_left == 0) min_active = 60;
+
+          // --- tick drawer (with thickness) ---
+          auto draw_tick = [&](float angle, int r_end, int len, Color col, int thick) {
+            const float ca = cosf(angle), sa = sinf(angle);
+            const int x1 = cx + (int)((r_end - len) * ca);
+            const int y1 = cy + (int)((r_end - len) * sa);
+            const int x2 = cx + (int)(r_end * ca);
+            const int y2 = cy + (int)(r_end * sa);
+
+            if (thick <= 1) {
+              id(main_display).line(x1, y1, x2, y2, col);
+              return;
+            }
+            const float px = -sa, py = ca;
+            for (int t = -thick/2; t <= thick/2; ++t) {
+              int ox = (int) lroundf(px * t);
+              int oy = (int) lroundf(py * t);
+              id(main_display).line(x1 + ox, y1 + oy, x2 + ox, y2 + oy, col);
+            }
+          };
+
+          // --- rings ---
+          const float TWO_PI = 6.2831853f;
+          for (int i = 0; i < 60; ++i) {
+            float a = -3.1415926f/2 + (i / 60.0f) * TWO_PI;
+            draw_tick(a, R_SEC, L_SEC, (i < sec_active) ? SEC_COL : GREY, TH_SEC);
           }
 
-          // --- Center text inside the box ---
-          id(main_display).printf(
-            cx, y + (box_h / 2),
-            id(font_timer), Color::BLACK,
-            TextAlign::CENTER, "%s", display_string.c_str()
-          );
+          if (left >= 60) {
+            for (int i = 0; i < 60; ++i) {
+              float a = -3.1415926f/2 + (i / 60.0f) * TWO_PI;
+              draw_tick(a, R_MIN, L_MIN, (i < min_active) ? MIN_COL : GREY, TH_MIN);
+            }
+          }
+
+          // --- numbers in monospace ---
+          // seconds centered
+          char s_buf[8];
+          snprintf(s_buf, sizeof(s_buf), "%02d", seconds_left);
+          id(main_display).printf(cx, cy + 2, id(font_big_clock_mono), Color::WHITE,
+                                  TextAlign::CENTER, "%s", s_buf);
+
+          // minutes above seconds (a bit higher to avoid collision)
+          if (left >= 60) {
+            int total_minutes = left / 60;
+            char m_buf[12];
+            snprintf(m_buf, sizeof(m_buf), "%d", total_minutes);
+
+            // push it further up based on ring length + a scale padding
+            const int TEXT_PAD = std::max(16, S / 14);   // increased from ~S/16 for extra clearance
+            int y_min = cy - (L_SEC + TEXT_PAD);
+
+            id(main_display).printf(cx, y_min, id(font_big_clock_mono), Color::WHITE,
+                                    TextAlign::CENTER, "%s", m_buf);
+          }
 
   - id: start_wake_word
     then:
@@ -860,7 +873,7 @@ script:
           condition:
             and:
               - not:
-                  - voice_assistant.is_running:
+                  voice_assistant.is_running:
               - lambda: return id(wake_word_engine_location).state == "On device";
           then:
             - lambda: id(va).set_use_wake_word(false);
@@ -869,11 +882,12 @@ script:
           condition:
             and:
               - not:
-                  - voice_assistant.is_running:
+                  voice_assistant.is_running:
               - lambda: return id(wake_word_engine_location).state == "In Home Assistant";
           then:
             - lambda: id(va).set_use_wake_word(true);
             - voice_assistant.start_continuous:
+
   - id: stop_wake_word
     then:
       - if:
@@ -887,6 +901,7 @@ script:
             lambda: return id(wake_word_engine_location).state == "On device";
           then:
             - micro_wake_word.stop:
+
   - id: set_idle_or_mute_phase
     then:
       - if:
@@ -896,7 +911,6 @@ script:
             - lambda: id(voice_assistant_phase) = ${voice_assist_idle_phase_id};
           else:
             - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
-
 
   - id: play_sound
     parameters:
@@ -912,9 +926,8 @@ script:
               .set_announcement(true)
               .perform();
           }
-          if ( (id(external_media_player).state != media_player::MediaPlayerState::MEDIA_PLAYER_STATE_ANNOUNCING ) || priority) {
-            id(external_media_player)
-              ->play_file(sound_file, true, false);
+          if ((id(external_media_player).state != media_player::MediaPlayerState::MEDIA_PLAYER_STATE_ANNOUNCING) || priority) {
+            id(external_media_player)->play_file(sound_file, true, false);
           }
 
   - id: reset_screensaver
@@ -955,7 +968,7 @@ script:
             id(main_display).show_page(default_clock);
           } else if (sel == "Flip") {
             id(main_display).show_page(flip_clock);
-          } else { // "7-segment" or any unrecognized value
+          } else {
             id(main_display).show_page(clock_7segment);
           }
           id(main_display).update();
@@ -978,6 +991,7 @@ switch:
       - lambda: id(voice_assistant_phase) = ${voice_assist_muted_phase_id};
       - script.execute: reset_screensaver
       - script.execute: draw_display
+
   - platform: template
     id: timer_ringing
     optimistic: true
@@ -985,22 +999,22 @@ switch:
     restore_mode: ALWAYS_OFF
     on_turn_off:
       - lambda: |-
-              id(external_media_player)
-                ->make_call()
-                .set_command(media_player::MediaPlayerCommand::MEDIA_PLAYER_COMMAND_REPEAT_OFF)
-                .set_announcement(true)
-                .perform();
-              id(external_media_player)->set_playlist_delay_ms(speaker::AudioPipelineType::ANNOUNCEMENT, 0);
+          id(external_media_player)
+            ->make_call()
+            .set_command(media_player::MediaPlayerCommand::MEDIA_PLAYER_COMMAND_REPEAT_OFF)
+            .set_announcement(true)
+            .perform();
+          id(external_media_player)->set_playlist_delay_ms(speaker::AudioPipelineType::ANNOUNCEMENT, 0);
       - media_player.stop:
           announcement: true
     on_turn_on:
       - lambda: |-
-            id(external_media_player)
-              ->make_call()
-              .set_command(media_player::MediaPlayerCommand::MEDIA_PLAYER_COMMAND_REPEAT_ONE)
-              .set_announcement(true)
-              .perform();
-            id(external_media_player)->set_playlist_delay_ms(speaker::AudioPipelineType::ANNOUNCEMENT, 1000);
+          id(external_media_player)
+            ->make_call()
+            .set_command(media_player::MediaPlayerCommand::MEDIA_PLAYER_COMMAND_REPEAT_ONE)
+            .set_announcement(true)
+            .perform();
+          id(external_media_player)->set_playlist_delay_ms(speaker::AudioPipelineType::ANNOUNCEMENT, 1000);
       - media_player.speaker.play_on_device_media_file:
           media_file: timer_finished_sound
           announcement: true
@@ -1051,7 +1065,6 @@ switch:
     restore_mode: RESTORE_DEFAULT_ON
     entity_category: config
     on_turn_off:
-      # If it was showing, hide it immediately
       - lambda: |-
           if (id(show_clock)) id(show_clock) = false;
           id(idle_seconds) = 0;
@@ -1067,12 +1080,20 @@ switch:
     restore_mode: RESTORE_DEFAULT_ON
 
   - platform: template
+    id: clock_show_time
+    name: "Clock Show Time"
+    icon: "mdi:clock-digital"
+    entity_category: config
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_ON
+
+  - platform: template
     id: clock_show_seconds
     name: "Clock Show Seconds"
     icon: "mdi:timer-outline"
     entity_category: config
     optimistic: true
-    restore_mode: RESTORE_DEFAULT_ON  # starts with seconds visible
+    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: template
     id: clock_show_date
@@ -1093,7 +1114,7 @@ switch:
   - platform: template
     id: clock_show_wallpaper
     name: "Clock Show Wallpaper"
-    icon: "mdi:dots-circle"
+    icon: "mdi:image"
     entity_category: config
     optimistic: true
     restore_mode: RESTORE_DEFAULT_ON
@@ -1116,7 +1137,8 @@ select:
             lambda: return !id(init_in_progress);
           then:
             - wait_until:
-                lambda: return id(voice_assistant_phase) == ${voice_assist_muted_phase_id} || id(voice_assistant_phase) == ${voice_assist_idle_phase_id};
+                lambda: return id(voice_assistant_phase) == ${voice_assist_muted_phase_id}
+                           || id(voice_assistant_phase) == ${voice_assist_idle_phase_id};
             - if:
                 condition:
                   lambda: return x == "In Home Assistant";
@@ -1172,19 +1194,17 @@ select:
       - clock
       - hacker
       - ha-girl
+      - mission
       - starrysky
     initial_option: ${clock_background_image}
     on_value:
-      # point the online image at the new URL (built at runtime)
       - online_image.set_url:
           id: clock_background
           url: !lambda |-
-            // Build: https://.../Other/<WxH>/<choice>.png
             std::string base = "https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/Other/"
                                "${imagewidth}x${imageheight}/";
             return base + std::string(x) + ".png";
           update: true
-      # redraw so the change is visible immediately
       - script.execute: draw_display
 
 globals:
@@ -1192,39 +1212,54 @@ globals:
     type: bool
     restore_value: false
     initial_value: "true"
+
   - id: voice_assistant_phase
     type: int
     restore_value: false
     initial_value: ${voice_assist_not_ready_phase_id}
+
   - id: global_first_active_timer
     type: voice_assistant::Timer
     restore_value: false
+
   - id: global_is_timer_active
     type: bool
     restore_value: false
+
   - id: global_first_timer
     type: voice_assistant::Timer
     restore_value: false
+
   - id: global_is_timer
     type: bool
     restore_value: false
+
   - id: last_battery_percent
     type: int
     restore_value: no
-    initial_value: '-1'
+    initial_value: "-1"
+
   - id: playing_internal_sound
     type: bool
     restore_value: no
-    initial_value: 'false'
+    initial_value: "false"
+
   - id: boot_sound_played
     type: bool
     restore_value: no
     initial_value: "false"
+
   - id: idle_seconds
     type: int
     restore_value: no
     initial_value: "0"
+
   - id: show_clock
+    type: bool
+    restore_value: no
+    initial_value: "false"
+
+  - id: showing_fullscreen_image
     type: bool
     restore_value: no
     initial_value: "false"
@@ -1294,18 +1329,10 @@ font:
       - ${font_glyphsets}
   - file:
       type: gfonts
-      family: ${font_family}
-      weight: 300
-    id: font_timer
-    size: 28
-    glyphsets:
-      - ${font_glyphsets}
-  - file:
-      type: gfonts
       family: Syne Mono
       weight: 400
     id: font_big_clock_mono
-    size: 30
+    size: 42
     glyphsets:
       - ${font_glyphsets}
   - file:
@@ -1313,7 +1340,7 @@ font:
       family: ${font_family}
       weight: 400
     id: font_big_date
-    size: 18
+    size: 22
     glyphsets:
       - ${font_glyphsets}
 
@@ -1343,7 +1370,6 @@ text_sensor:
     name: "Text Request"
     on_value:
       lambda: |-
-        // Keep HA state under 255 chars to avoid "unknown"
         if (id(text_request_full).state.length() > 250) {
           std::string s = id(text_request_full).state.c_str();
           std::string truncated = esphome::str_truncate(s.c_str(), 250);
@@ -1355,7 +1381,6 @@ text_sensor:
     name: "Text Response"
     on_value:
       lambda: |-
-        // Keep HA state under 255 chars to avoid "unknown"
         if (id(text_response_full).state.length() > 250) {
           std::string s = id(text_response_full).state.c_str();
           std::string truncated = esphome::str_truncate(s.c_str(), 250);
@@ -1364,7 +1389,7 @@ text_sensor:
 
 color:
   - id: idle_color
-    hex: ${idle_illustration_background_color}
+    hex: ${loading_illustration_background_color}
   - id: listening_color
     hex: ${listening_illustration_background_color}
   - id: thinking_color
@@ -1382,29 +1407,68 @@ color:
   - id: seconds_dot_color
     hex: "3b89e3"
 
+# HARDWARE
+
 spi:
   - id: spi_bus
-    clk_pin: ${spi_clk_pin}
-    mosi_pin: ${spi_mosi_pin}
+    clk_pin: 14
+    mosi_pin: 17
+    # (no MISO line for display)
 
+i2s_audio:
+  - id: i2s_mic
+    i2s_lrclk_pin: GPIO4   # WS
+    i2s_bclk_pin:  GPIO5   # SCK
+  - id: i2s_audio_bus
+    i2s_lrclk_pin: GPIO16
+    i2s_bclk_pin:  GPIO15
+    # (no MCLK on this board)
+
+# --- AUDIO DEVICES ------------------------------------------------------------
+microphone:
+  - platform: i2s_audio
+    id: box_mic
+    i2s_audio_id: i2s_mic
+    i2s_din_pin: GPIO6
+    adc_type: external
+    channel: left
+    pdm: false
+    sample_rate: 16000
+    bits_per_sample: 16bit
+
+speaker:
+  - platform: i2s_audio
+    id: box_speaker
+    i2s_audio_id: i2s_audio_bus
+    i2s_dout_pin: GPIO7
+    dac_type: external
+    sample_rate: 16000
+    channel: left
+
+# --- DISPLAY DRIVER (SPI GC9A01A, 240x240 round) ------------------------------
 display:
   - platform: ili9xxx
     id: main_display
-    model: ${displaymodel}
-    invert_colors: ${invertcolors}
+    model: ILI9341
+    spi_id: spi_bus
+    cs_pin: 13
+    dc_pin: 10
+    reset_pin: 18
+    invert_colors: false
     data_rate: 40MHz
-    cs_pin: ${lcd_cs_pin}
-    dc_pin: ${lcd_dc_pin}
-    reset_pin: ${lcd_reset_pin}
     update_interval: never
     dimensions:
-        height: ${imageheight}
-        width: ${imagewidth}
+      height: ${imageheight}
+      width: ${imagewidth}
     pages:
+
+# display_pages v1.01
+
       - id: idle_page
         lambda: |-
           it.fill(id(idle_color));
           it.image((it.get_width() / 2), (it.get_height() / 2), id(casita_idle), ImageAlign::CENTER);
+          id(draw_active_timer_widget).execute();
 
           if (id(show_battery_status).state) {
             // ---- layout ----
@@ -1658,25 +1722,37 @@ display:
           }
 
           // ---------- Time text ----------
-          int clock_y = id(clock_show_date).state ? (cy - 24) : cy;
-          if (id(clock_24h).state) {
-            if (id(clock_show_seconds).state)
-              it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%H:%M:%S", now);
-            else
-              it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%H:%M", now);
-          } else {
-            if (id(clock_show_seconds).state)
-              it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%I:%M:%S%p", now);
-            else
-              it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%I:%M%p", now);
+          if (id(clock_show_time).state) {
+            int clock_y = id(clock_show_date).state ? (cy - 24) : cy;
+            if (id(clock_24h).state) {
+              if (id(clock_show_seconds).state)
+                it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%H:%M:%S", now);
+              else
+                it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%H:%M", now);
+            } else {
+              if (id(clock_show_seconds).state)
+                it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%I:%M:%S%p", now);
+              else
+                it.strftime(cx, clock_y, id(font_big_clock_mono), clock_col, TextAlign::CENTER, "%I:%M%p", now);
+            }
           }
 
           // ---------- Date ----------
           if (id(clock_show_date).state) {
-            if (id(clock_24h).state)
-              it.strftime(cx, cy + 14, id(font_big_date), clock_col, TextAlign::CENTER, "%a, %d %b", now);
-            else
-              it.strftime(cx, cy + 14, id(font_big_date), clock_col, TextAlign::CENTER, "%a, %b %d", now);
+            if (id(clock_show_time).state) {
+              // Normal layout: time shown, date below it
+              if (id(clock_24h).state)
+                it.strftime(cx, cy + 14, id(font_big_date), clock_col, TextAlign::CENTER, "%a, %d %b", now);
+              else
+                it.strftime(cx, cy + 14, id(font_big_date), clock_col, TextAlign::CENTER, "%a, %b %d", now);
+            } else {
+              // Time hidden: center the date where time would normally sit
+              int date_y = cy;
+              if (id(clock_24h).state)
+                it.strftime(cx, date_y, id(font_big_date), clock_col, TextAlign::CENTER, "%a, %d %b", now);
+              else
+                it.strftime(cx, date_y, id(font_big_date), clock_col, TextAlign::CENTER, "%a, %b %d", now);
+            }
           }
 
           if (id(show_battery_status).state) {
@@ -1828,45 +1904,57 @@ display:
             it.printf(x + w/2, y + h/2 - 1, id(font_big_clock_mono), FG, TextAlign::CENTER, "%s", buf);
           };
 
-          // Panel positions
-          int x1 = left;
-          int x2 = x1 + panel_w + gap;
-          int colon_x = x2 + panel_w + colon_gap;
-          int x3 = colon_x + colon_gap;
-          int x4 = x3 + panel_w + gap;
+          // Panel positions + digits + colon + AM/PM
+          if (id(clock_show_time).state) {
+            int x1 = left;
+            int x2 = x1 + panel_w + gap;
+            int colon_x = x2 + panel_w + colon_gap;
+            int x3 = colon_x + colon_gap;
+            int x4 = x3 + panel_w + gap;
 
-          // Draw panels + digits
-          draw_panel(x1, top, panel_w, panel_h); print_digit(x1, top, panel_w, panel_h, h1);
-          draw_panel(x2, top, panel_w, panel_h); print_digit(x2, top, panel_w, panel_h, h2);
-          draw_panel(x3, top, panel_w, panel_h); print_digit(x3, top, panel_w, panel_h, m1);
-          draw_panel(x4, top, panel_w, panel_h); print_digit(x4, top, panel_w, panel_h, m2);
+            // Draw panels + digits
+            draw_panel(x1, top, panel_w, panel_h); print_digit(x1, top, panel_w, panel_h, h1);
+            draw_panel(x2, top, panel_w, panel_h); print_digit(x2, top, panel_w, panel_h, h2);
+            draw_panel(x3, top, panel_w, panel_h); print_digit(x3, top, panel_w, panel_h, m1);
+            draw_panel(x4, top, panel_w, panel_h); print_digit(x4, top, panel_w, panel_h, m2);
 
-          // Colon (blink when seconds ON; steady otherwise)
-          bool blink = id(clock_show_seconds).state && ((sec % 2) == 0);
-          int colon_r = std::max(2, panel_w / 14);
-          int colon_y_offset = panel_h / 6;
-          if (!blink) {
-            it.filled_circle(colon_x, cy - colon_y_offset, colon_r, COLON_DOT);
-            it.filled_circle(colon_x, cy + colon_y_offset, colon_r, COLON_DOT);
-          }
-
-          // --- Optional date below the clock (slightly lower than before) ---
-          if (id(clock_show_date).state) {
-            const int date_pad     = std::max(6, H / 36);  // spacing under panels
-            const int extra_offset = std::max(5, H / 48);  // extra push down
-            const int date_margin  = std::max(3, H / 120); // keep inside rim
-            int safe_bottom = cy + allowed_half - date_margin;
-
-            int date_y = top + panel_h + date_pad + extra_offset;
-            if (date_y > safe_bottom) date_y = safe_bottom;
-
-            if (id(clock_24h).state) {
-              it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %d %b", now);
-            } else {
-              it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %b %d", now);
+            // Colon (blink when seconds ON; steady otherwise)
+            bool blink = id(clock_show_seconds).state && ((sec % 2) == 0);
+            int colon_r = std::max(2, panel_w / 14);
+            int colon_y_offset = panel_h / 6;
+            if (!blink) {
+              it.filled_circle(colon_x, cy - colon_y_offset, colon_r, COLON_DOT);
+              it.filled_circle(colon_x, cy + colon_y_offset, colon_r, COLON_DOT);
             }
           }
 
+          // --- Date ---
+          if (id(clock_show_date).state) {
+            if (id(clock_show_time).state) {
+              // Normal layout: time shown, date below it
+              const int date_pad     = std::max(6, H / 36);
+              const int extra_offset = std::max(5, H / 48);
+              const int date_margin  = std::max(3, H / 120);
+              int safe_bottom = cy + allowed_half - date_margin;
+
+              int date_y = top + panel_h + date_pad + extra_offset;
+              if (date_y > safe_bottom) date_y = safe_bottom;
+
+              if (id(clock_24h).state) {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %d %b", now);
+              } else {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %b %d", now);
+              }
+            } else {
+              // Time hidden: center the date where the time cluster would be
+              int date_y = cy;
+              if (id(clock_24h).state) {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %d %b", now);
+              } else {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %b %d", now);
+              }
+            }
+          }
 
           // --- precomputed unit circle (once) for the seconds dots ---
           static bool LUT_INIT = false;
@@ -2172,49 +2260,63 @@ display:
           int x3 = colon_x_left + 2*colon_gap;
           int x4 = x3 + DW + gap;
 
-          // render digits
-          int h1 = (hour / 10) % 10;
-          int h2 = hour % 10;
-          int m1 = (minute / 10) % 10;
-          int m2 = minute % 10;
-          draw_digit(x1, top, h1, FG, true);
-          draw_digit(x2, top, h2, FG, true);
-          draw_digit(x3, top, m1, FG, true);
-          draw_digit(x4, top, m2, FG, true);
+          // -------- render digits / colon / AM-PM (guarded by Clock Show Time) --------
+          if (id(clock_show_time).state) {
+            // render digits
+            int h1 = (hour / 10) % 10;
+            int h2 = hour % 10;
+            int m1 = (minute / 10) % 10;
+            int m2 = minute % 10;
+            draw_digit(x1, top, h1, FG, true);
+            draw_digit(x2, top, h2, FG, true);
+            draw_digit(x3, top, m1, FG, true);
+            draw_digit(x4, top, m2, FG, true);
 
-          // colon
-          int colon_center_x = (x2 + DW + x3) / 2;
-          int colon_center_y = top + DH / 2;
-          bool blink = id(clock_show_seconds).state && ((sec % 2) == 0);
-          int colon_r = std::max(2, DW / 14);
-          int colon_y_offset = DH / 6;
-          if (!blink) {
-            it.filled_circle(colon_center_x, colon_center_y - colon_y_offset, colon_r, FG);
-            it.filled_circle(colon_center_x, colon_center_y + colon_y_offset, colon_r, FG);
+            // colon
+            int colon_center_x = (x2 + DW + x3) / 2;
+            int colon_center_y = top + DH / 2;
+            bool blink = id(clock_show_seconds).state && ((sec % 2) == 0);
+            int colon_r = std::max(2, DW / 14);
+            int colon_y_offset = DH / 6;
+            if (!blink) {
+              it.filled_circle(colon_center_x, colon_center_y - colon_y_offset, colon_r, FG);
+              it.filled_circle(colon_center_x, colon_center_y + colon_y_offset, colon_r, FG);
+            }
+
+            // AM/PM
+            if (!id(clock_24h).state) {
+              const char *ampm = (now.hour >= 12) ? "PM" : "AM";
+              int ampm_x = x4 + DW - 4;
+              int ampm_y = top + DH / 2 - 3;
+              Color dim_fg(
+                (uint8_t)(FG.r * 0.7f),
+                (uint8_t)(FG.g * 0.7f),
+                (uint8_t)(FG.b * 0.7f)
+              );
+              it.printf(ampm_x, ampm_y, id(font_battery), dim_fg, TextAlign::CENTER_LEFT, "%s", ampm);
+            }
           }
 
-          // AM/PM
-          if (!id(clock_24h).state) {
-            const char *ampm = (now.hour >= 12) ? "PM" : "AM";
-            int ampm_x = x4 + DW - 4;
-            int ampm_y = top + DH / 2 - 3;
-            Color dim_fg(
-              (uint8_t)(FG.r * 0.7f),
-              (uint8_t)(FG.g * 0.7f),
-              (uint8_t)(FG.b * 0.7f)
-            );
-            it.printf(ampm_x, ampm_y, id(font_battery), dim_fg, TextAlign::CENTER_LEFT, "%s", ampm);
-          }
-
-          // date
+          // -------- date (adapts to time shown/hidden) --------
           if (id(clock_show_date).state) {
-            const int date_pad     = std::max(10, H / 20);
-            const int extra_offset = std::max(6, H / 32);
-            int date_y = top + DH + date_pad + extra_offset;
-            if (id(clock_24h).state) {
-              it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %d %b", now);
+            if (id(clock_show_time).state) {
+              // Normal layout: time shown, date below it
+              const int date_pad     = std::max(10, H / 20);
+              const int extra_offset = std::max(6, H / 32);
+              int date_y = top + DH + date_pad + extra_offset;
+              if (id(clock_24h).state) {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %d %b", now);
+              } else {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %b %d", now);
+              }
             } else {
-              it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %b %d", now);
+              // Time hidden: center the date where the digits would be
+              int date_y = cy;
+              if (id(clock_24h).state) {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %d %b", now);
+              } else {
+                it.strftime(cx, date_y, id(font_big_date), FG, TextAlign::CENTER, "%a, %b %d", now);
+              }
             }
           }
 
@@ -2272,7 +2374,6 @@ display:
             it.printf(tx+1, ty+1, id(font_battery), Color::BLACK, TextAlign::CENTER, "%s", txt);
             it.printf(tx,   ty,   id(font_battery), Color::WHITE, TextAlign::CENTER, "%s", txt);
           }
-
       - id: empty_clock
         lambda: |-
           it.fill(Color::BLACK);

@@ -1,42 +1,26 @@
 substitutions:
-  name: esphome-web-7aa010
-  friendly_name: Xiaozhi Taichi Pi v2
+  name: esphome-web-d81da0
+  friendly_name: Waveshare_1.85 LCD
 
-## VERSION 1.02 dev. ##
-## cleandup and fixes.
-## VERSION 1.01 dev. ##
-## ADDED; clock when idle more than 30 seconds.
-## ADDED; virtual touch, so same functionality as touch is available from home assistant (start, stop, stop timer alarm)
-## ADDED: use og playing.png emo when playing music on mediaplayer, still changes to clock after 30 seconds.
-## ADDED: timer ringing entity so the alert can trigger other things through automations.
-## ADDED: longer request and response entities so they can be shown on dashboards, limited to 255 letters though.
-## FIX: timer pages to be dynamic for different screen sizes
-##
-## VERSION 1.00 ##
-## First working code
+### THIS IS FOR ESP32-S3-Touch-LCD-1.85C and ESP32-S3-Touch-LCD-1.85C-BOX ###
 
 ## SETTINGS ######################################################################################################################################
 
-  imagemodel: "ha-girl" # options are:
-
-##################################################################################################################################################
-# Alfred, Astrobot, Buzz, Casita, Cybergirl, Dory, EVE, Eyes, Eyes2, GLaDOS, Girl1, Guy1, Guy2, Gwen, HA-character, ha-girl, Hacker, Harley, Jarvis,
-# Luffy, Mario, Max, Prime, Robochibi, Robocop, Robot, Robotgirl, Shaun
-##################################################################################################################################################
-
   startup_sound: "Home_Connected" # (options are: available, Home_Connected, Home_Connected_Male, Computer_Ready)
+  clock_background_image: "hacker" # (options are: clock, hacker, ha-girl, mission, starrysky)
+  clock_type: "flip_clock" # (options are: default_clock, flip_clock, clock_7segment)
+  imagemodel: "Gwen" # options are:
 
-  clock_type: "clock_7segment" # (options are: default_clock, flip_clock, clock_7segment)
-  clock_background_image: "starrysky" # (options are: clock, hacker, starrysky)
+# Alita, Alfred, Astrobot, Buzz, Casita, Cybergirl, Dory, EVE, Eyes, Eyes2, GLaDOS, Girl1, Guy1, Guy2, Gwen, HA-character, ha-girl, Hacker, Harley,
+# Jarvis, Luffy, Mario, Max, Prime, Robochibi, Robocop, Robot, Robotgirl, Shaun
+##################################################################################################################################################
 
   display_platform: "mipi_spi"
-  display_model: "CUSTOM"
+  display_model: "JC3636W518"
   imagewidth: "360"
   imageheight: "360"
   rotate_display: "180"
 
-  pdm_mic_type: "true" # False for v1, true for v2.
- 
 ##################################################################################################################################################
 
   loading_illustration_file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/images/${imagemodel}/${imagewidth}x${imageheight}/loading.png
@@ -172,10 +156,12 @@ binary_sensor:
     name: "Touch Button"
     id: touch_input
     on_multi_click:
+      # Single tap
       - timing:
           - ON for 40ms to 400ms
           - OFF for at least 330ms
         then:
+          - script.execute: reset_screensaver
           - if:
               condition:
                 switch.is_on: timer_ringing
@@ -186,8 +172,6 @@ binary_sensor:
                     condition:
                       lambda: return id(wake_word_engine_location).state == "On device";
                     then:
-                      - media_player.stop:
-                          id: external_media_player
                       - if:
                           condition:
                             not:
@@ -195,13 +179,9 @@ binary_sensor:
                           then:
                             - voice_assistant.start:
                           else:
-                            - voice_assistant.stop:  
-
-#      - timing:
-#          - ON for at least 1s
-#        then:
-#          - switch.toggle: show_battery_status
-#          - script.execute: draw_display
+                            - voice_assistant.stop:
+          - display.page.show: idle_page
+          - component.update: main_display
 
   - platform: gpio
     pin:
@@ -223,8 +203,6 @@ binary_sensor:
               then:
                 - switch.turn_off: timer_ringing
               else:
-                - media_player.stop:
-                    id: external_media_player
                 - if:
                     condition:
                       not:
@@ -249,7 +227,7 @@ binary_sensor:
 
 output:
   - platform: ledc
-    pin: 15
+    pin: 5
     id: backlight_output
 
   - platform: template
@@ -293,33 +271,30 @@ light:
 
 i2s_audio:
   - id: i2s_mic # For microphone
-    i2s_lrclk_pin: GPIO45 #WS 
-    i2s_bclk_pin: GPIO42  #SCK
+    i2s_lrclk_pin: GPIO2 #WS 
+    i2s_bclk_pin: GPIO15  #SCK
   - id: i2s_audio_bus # For speaker
-    i2s_lrclk_pin: GPIO16
-    i2s_bclk_pin: GPIO18
-    i2s_mclk_pin: GPIO21
+    i2s_lrclk_pin: GPIO38
+    i2s_bclk_pin: GPIO48
 
 microphone:
   - platform: i2s_audio
     id: box_mic
     i2s_audio_id: i2s_mic
-    i2s_din_pin: GPIO46
+    i2s_din_pin: GPIO39
     adc_type: external
-    channel: left
-    pdm: ${pdm_mic_type} 
+    channel: right
+    pdm: false
     sample_rate: 16000
     bits_per_sample: 16bit
-    use_apll: true 
 
 speaker:
   - platform: i2s_audio
     id: box_speaker
     i2s_audio_id: i2s_audio_bus
-    i2s_dout_pin: GPIO17
+    i2s_dout_pin: GPIO47
     dac_type: external
-    sample_rate: 16000
-    channel: stereo
+    channel: mono
 
 media_player:
   - platform: speaker
@@ -327,9 +302,10 @@ media_player:
     id: external_media_player
     announcement_pipeline:
       speaker: box_speaker
-      format: FLAC
+      format: WAV
       sample_rate: 16000
       num_channels: 1
+    buffer_size: 250000
     files:
       - id: timer_finished_sound
         file: https://github.com/RealDeco/xiaozhi-esphome/raw/main/sounds/timer_finished.flac
@@ -895,13 +871,6 @@ switch:
       - delay: 15min
       - switch.turn_off: timer_ringing
 
-  - platform: gpio
-    name: Speaker Enable
-    icon: "mdi:speaker"
-    entity_category: config
-    pin: GPIO48
-    restore_mode: RESTORE_DEFAULT_ON
-
   - platform: template
     id: wake_sound
     name: Wake sound
@@ -1245,19 +1214,18 @@ color:
 spi:
   id: display_qspi
   type: quad
-  clk_pin: 9
-  data_pins: [11, 12, 13, 14]
+  clk_pin: 40
+  data_pins: [46, 45, 42, 41]
 
 i2c:
-  sda: 7
-  scl: 8
+  sda: 11
+  scl: 10
   id: touchscreen_bus
 
 touchscreen:
   - platform: cst816
     id: my_touchscreen
-    interrupt_pin: GPIO41
-    reset_pin: GPIO40
+    interrupt_pin: 4
     display: main_display
     i2c_id: touchscreen_bus
     on_touch:
@@ -1267,215 +1235,24 @@ touchscreen:
             state: ON
     on_release:
       then:
-        - script.execute: reset_screensaver
         - binary_sensor.template.publish:
             id: touch_input
             state: OFF
 
+pca9554:
+  - id: pca9554a_device
+    address: 0x20
 
 display:
   - platform: ${display_platform}
     id: main_display
-    bus_mode: quad
     model: ${display_model}
     rotation: ${rotate_display}
-    spi_id: display_qspi
-    data_rate: 40MHz
-    color_order: rgb
-    invert_colors: true
-    dimensions:
-      height: ${imageheight}
-      width: ${imagewidth}
-    cs_pin: 10
-    reset_pin: GPIO47
+    cs_pin: 21
+    reset_pin:
+      pca9554: pca9554a_device
+      number: 1
     update_interval: never
-    auto_clear_enabled: true
-
-    init_sequence:
-      - [ 0xF0, 0x28 ]
-      - [ 0xF2, 0x28 ]
-      - [ 0x73, 0xF0 ]
-      - [ 0x7C, 0xD1 ]
-      - [ 0x83, 0xE0 ]
-      - [ 0x84, 0x61 ]
-      - [ 0xF2, 0x82 ]
-      - [ 0xF0, 0x00 ]
-      - [ 0xF0, 0x01 ]
-      - [ 0xF1, 0x01 ]
-      - [ 0xB0, 0x56 ]
-      - [ 0xB1, 0x4D ]
-      - [ 0xB2, 0x24 ]
-      - [ 0xB4, 0x87 ]
-      - [ 0xB5, 0x44 ]
-      - [ 0xB6, 0x8B ]
-      - [ 0xB7, 0x40 ]
-      - [ 0xB8, 0x86 ]
-      - [ 0xBA, 0x00 ]
-      - [ 0xBB, 0x08 ]
-      - [ 0xBC, 0x08 ]
-      - [ 0xBD, 0x00 ]
-      - [ 0xC0, 0x80 ]
-      - [ 0xC1, 0x10 ]
-      - [ 0xC2, 0x37 ]
-      - [ 0xC3, 0x80 ]
-      - [ 0xC4, 0x10 ]
-      - [ 0xC5, 0x37 ]
-      - [ 0xC6, 0xA9 ]
-      - [ 0xC7, 0x41 ]
-      - [ 0xC8, 0x01 ]
-      - [ 0xC9, 0xA9 ]
-      - [ 0xCA, 0x41 ]
-      - [ 0xCB, 0x01 ]
-      - [ 0xD0, 0x91 ]
-      - [ 0xD1, 0x68 ]
-      - [ 0xD2, 0x68 ]
-      - [ 0xF5, 0x00, 0xA5 ]
-      - [ 0xDD, 0x4F ]
-      - [ 0xDE, 0x4F ]
-      - [ 0xF1, 0x10 ]
-      - [ 0xF0, 0x00 ]
-      - [ 0xF0, 0x02 ]
-      - [ 0xE0, 0xF0, 0x0A, 0x10, 0x09, 0x09, 0x36, 0x35, 0x33, 0x4A, 0x29, 0x15, 0x15, 0x2E, 0x34 ]
-      - [ 0xE1, 0xF0, 0x0A, 0x0F, 0x08, 0x08, 0x05, 0x34, 0x33, 0x4A, 0x39, 0x15, 0x15, 0x2D, 0x33 ]
-      - [ 0xF0, 0x10 ]
-      - [ 0xF3, 0x10 ]
-      - [ 0xE0, 0x07 ]
-      - [ 0xE1, 0x00 ]
-      - [ 0xE2, 0x00 ]
-      - [ 0xE3, 0x00 ]
-      - [ 0xE4, 0xE0 ]
-      - [ 0xE5, 0x06 ]
-      - [ 0xE6, 0x21 ]
-      - [ 0xE7, 0x01 ]
-      - [ 0xE8, 0x05 ]
-      - [ 0xE9, 0x02 ]
-      - [ 0xEA, 0xDA ]
-      - [ 0xEB, 0x00 ]
-      - [ 0xEC, 0x00 ]
-      - [ 0xED, 0x0F ]
-      - [ 0xEE, 0x00 ]
-      - [ 0xEF, 0x00 ]
-      - [ 0xF8, 0x00 ]
-      - [ 0xF9, 0x00 ]
-      - [ 0xFA, 0x00 ]
-      - [ 0xFB, 0x00 ]
-      - [ 0xFC, 0x00 ]
-      - [ 0xFD, 0x00 ]
-      - [ 0xFE, 0x00 ]
-      - [ 0xFF, 0x00 ]
-      - [ 0x60, 0x40 ]
-      - [ 0x61, 0x04 ]
-      - [ 0x62, 0x00 ]
-      - [ 0x63, 0x42 ]
-      - [ 0x64, 0xD9 ]
-      - [ 0x65, 0x00 ]
-      - [ 0x66, 0x00 ]
-      - [ 0x67, 0x00 ]
-      - [ 0x68, 0x00 ]
-      - [ 0x69, 0x00 ]
-      - [ 0x6A, 0x00 ]
-      - [ 0x6B, 0x00 ]
-      - [ 0x70, 0x40 ]
-      - [ 0x71, 0x03 ]
-      - [ 0x72, 0x00 ]
-      - [ 0x73, 0x42 ]
-      - [ 0x74, 0xD8 ]
-      - [ 0x75, 0x00 ]
-      - [ 0x76, 0x00 ]
-      - [ 0x77, 0x00 ]
-      - [ 0x78, 0x00 ]
-      - [ 0x79, 0x00 ]
-      - [ 0x7A, 0x00 ]
-      - [ 0x7B, 0x00 ]
-      - [ 0x80, 0x48 ]
-      - [ 0x81, 0x00 ]
-      - [ 0x82, 0x06 ]
-      - [ 0x83, 0x02 ]
-      - [ 0x84, 0xD6 ]
-      - [ 0x85, 0x04 ]
-      - [ 0x86, 0x00 ]
-      - [ 0x87, 0x00 ]
-      - [ 0x88, 0x48 ]
-      - [ 0x89, 0x00 ]
-      - [ 0x8A, 0x08 ]
-      - [ 0x8B, 0x02 ]
-      - [ 0x8C, 0xD8 ]
-      - [ 0x8D, 0x04 ]
-      - [ 0x8E, 0x00 ]
-      - [ 0x8F, 0x00 ]
-      - [ 0x90, 0x48 ]
-      - [ 0x91, 0x00 ]
-      - [ 0x92, 0x0A ]
-      - [ 0x93, 0x02 ]
-      - [ 0x94, 0xDA ]
-      - [ 0x95, 0x04 ]
-      - [ 0x96, 0x00 ]
-      - [ 0x97, 0x00 ]
-      - [ 0x98, 0x48 ]
-      - [ 0x99, 0x00 ]
-      - [ 0x9A, 0x0C ]
-      - [ 0x9B, 0x02 ]
-      - [ 0x9C, 0xDC ]
-      - [ 0x9D, 0x04 ]
-      - [ 0x9E, 0x00 ]
-      - [ 0x9F, 0x00 ]
-      - [ 0xA0, 0x48 ]
-      - [ 0xA1, 0x00 ]
-      - [ 0xA2, 0x05 ]
-      - [ 0xA3, 0x02 ]
-      - [ 0xA4, 0xD5 ]
-      - [ 0xA5, 0x04 ]
-      - [ 0xA6, 0x00 ]
-      - [ 0xA7, 0x00 ]
-      - [ 0xA8, 0x48 ]
-      - [ 0xA9, 0x00 ]
-      - [ 0xAA, 0x07 ]
-      - [ 0xAB, 0x02 ]
-      - [ 0xAC, 0xD7 ]
-      - [ 0xAD, 0x04 ]
-      - [ 0xAE, 0x00 ]
-      - [ 0xAF, 0x00 ]
-      - [ 0xB0, 0x48 ]
-      - [ 0xB1, 0x00 ]
-      - [ 0xB2, 0x09 ]
-      - [ 0xB3, 0x02 ]
-      - [ 0xB4, 0xD9 ]
-      - [ 0xB5, 0x04 ]
-      - [ 0xB6, 0x00 ]
-      - [ 0xB7, 0x00 ]
-      - [ 0xB8, 0x48 ]
-      - [ 0xB9, 0x00 ]
-      - [ 0xBA, 0x0B ]
-      - [ 0xBB, 0x02 ]
-      - [ 0xBC, 0xDB ]
-      - [ 0xBD, 0x04 ]
-      - [ 0xBE, 0x00 ]
-      - [ 0xBF, 0x00 ]
-      - [ 0xC0, 0x10 ]
-      - [ 0xC1, 0x47 ]
-      - [ 0xC2, 0x56 ]
-      - [ 0xC3, 0x65 ]
-      - [ 0xC4, 0x74 ]
-      - [ 0xC5, 0x88 ]
-      - [ 0xC6, 0x99 ]
-      - [ 0xC7, 0x01 ]
-      - [ 0xC8, 0xBB ]
-      - [ 0xC9, 0xAA ]
-      - [ 0xD0, 0x10 ]
-      - [ 0xD1, 0x47 ]
-      - [ 0xD2, 0x56 ]
-      - [ 0xD3, 0x65 ]
-      - [ 0xD4, 0x74 ]
-      - [ 0xD5, 0x88 ]
-      - [ 0xD6, 0x99 ]
-      - [ 0xD7, 0x01 ]
-      - [ 0xD8, 0xBB ]
-      - [ 0xD9, 0xAA ]
-      - [ 0xF3, 0x01 ]
-      - [ 0xF0, 0x00 ]
-
-
-
     pages:
       - id: idle_page
         lambda: |-
