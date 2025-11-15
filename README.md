@@ -1,20 +1,15 @@
+<div align="center">
 
 # XIAOZHI-ESPHOME
 
-**Use your Xiaozhi AI devices in ESPHome as voice assistants for Home Assistant.**
+**Use your Xiaozhi AI devices in ESPHome as voice assistant satellites for Home Assistant.**
 
-(fully working with on-device wake word and custom graphics.)
+<img width="300" height="972" alt="Screenshot 2025-09-14 at 13 38 39" src="https://github.com/user-attachments/assets/30aff335-13c8-4fc3-9cef-22a0d819d069" />
+<img width="300" height="972" alt="c3c3c178-ab7e-494b-a0a2-6c03bb2b5155" src="https://github.com/user-attachments/assets/c7092055-329a-4471-8c25-b0718e4b2d54" />
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/958a2d99-5752-481b-be1e-d9ad797e6e33" alt="fam" width="250"/>
-  <img src="https://github.com/user-attachments/assets/96f173cd-9d57-492d-906c-83f3ce603ff2" alt="DIY" width="250"/>
-  <img src="https://github.com/user-attachments/assets/1f2c79c9-1963-415e-b43d-945bbc477cae" alt="DIY" width="250"/>
-</p>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/5d364985-a4ce-4b49-bf03-af7ce22bbc35" alt="20250614_195218" width="250"/>
-  <img src="https://github.com/user-attachments/assets/8e66a3d6-527b-4047-9f0c-fb7c9cb2490f" alt="Xiaozhi Device" width="250"/>
-  <img src="https://github.com/user-attachments/assets/4aa49b9e-ab2c-4949-aefc-9d51ecf6ac40" alt="identify your model" width="250"/>
-</p>
+<img width="600" src="https://github.com/user-attachments/assets/b66981ab-cdde-4507-821a-26e8d3c57ad6" />
+
+</div>
 
 
 By request, this GitHub project provides a simple way to use Xiaozhi-based devices with ESPHome. These compact devices can serve as voice assistants integrated with Home Assistant.
@@ -42,6 +37,8 @@ Video going through the esphome install of device was removed by youtube and my 
 
 ## ✅ Supported Devices (so far)
 
+* Espressif EchoEar v1.0
+* Espressif EchoEar v1.2
 * Spotpear Ball v1
 * Spotpear Ball v2
 * Spotpear Muma Box v1
@@ -55,10 +52,17 @@ Video going through the esphome install of device was removed by youtube and my 
 * Xingzhi Cube 1.54
 * "Breadboard Mini", the $7 custom ESP32-S3 with everything onboard
 * Waveshare 2.06" OLED Wrist Watch
-* Waveshare ESP32-S3-Touch-LCD-1.85C
+* Waveshare ESP32-S3-Touch-LCD-1.85C v1
+* Waveshare ESP32-S3-Touch-LCD-1.85C v2
+* Waveshare ESP32-S3-Touch-LCD-3.49 **NEW**
+
 ## 🛒 Where to Buy
 
+EchoEar: https://www.aliexpress.com/item/1005009834934442.html
+
 Ball v1 & v2: https://vi.aliexpress.com/item/1005008627679270.html
+
+alternative link: https://www.aliexpress.com/item/1005009762104155.html
 
 Muma Box: https://vi.aliexpress.com/item/1005009043526078.html
 
@@ -77,6 +81,8 @@ Breadboard Mini: https://www.aliexpress.com/item/1005009448496585.html
 Waveshare 2.06" OLED Wrist Watch: https://vi.aliexpress.com/item/1005009516438849.html
 
 Waveshare ESP32-S3-Touch-LCD-1.85C: https://www.aliexpress.com/item/1005008634826817.html
+
+Waveshare ESP32-S3-Touch-LCD-3.49: https://www.aliexpress.com/item/1005009894437640.html
 
 ## Accesories:
 
